@@ -1,12 +1,24 @@
 package classesBasicas;
 
+import erros.cpfInvalidoException;
+
 //abstrata
 public abstract class Pessoa {
 	private String nome, cpf, dataNascimento;
 	
-	protected Pessoa(String nome, String cpf, String dataNascimento) {
+	protected Pessoa(String nome, String cpf, String dataNascimento) 
+			throws cpfInvalidoException {
+		
 		this.nome = nome;
-		this.cpf = cpf;
+		
+		if (cpf.length() == 11) {			
+			this.cpf = cpf;
+		} else {
+			cpfInvalidoException e;
+			e = new cpfInvalidoException();
+			throw e;
+		}
+		
 		this.dataNascimento = dataNascimento;
 	}
 	
