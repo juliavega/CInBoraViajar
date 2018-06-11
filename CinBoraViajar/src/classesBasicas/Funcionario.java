@@ -8,14 +8,16 @@ public class Funcionario extends Pessoa {
 	// Atributos exclusivos da classe Funcionario
 	private String cargo;
 	private double salario;
-
+	
+	// Construtor classe Funcionario
 	public Funcionario(String nome, String cpf, String dataNascimento, String cargo, double salario)
 			throws nomeMuitoLongoException, cpfInvalidoException {
 		super(nome, cpf, dataNascimento);
 		this.cargo = cargo;
 		this.salario = salario;
 	}
-
+	
+	// Metodos
 	public String getCargo() {
 		return this.cargo;
 	}
