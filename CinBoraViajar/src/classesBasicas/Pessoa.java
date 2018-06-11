@@ -10,6 +10,7 @@ public abstract class Pessoa {
 	protected Pessoa(String nome, String cpf, String dataNascimento) 
 			throws nomeMuitoLongoException, cpfInvalidoException {
 		
+		// Checa se o nome tem mais que 200 caracteres (Invalido)
 		if (nome.length() < 200) {			
 			this.nome = nome;
 		} else {
@@ -18,6 +19,7 @@ public abstract class Pessoa {
 			throw e;
 		}
 		
+		// Checa se o cpf tem 11 caracteres
 		if (cpf.length() == 11) {			
 			this.cpf = cpf;
 		} else {
@@ -26,6 +28,7 @@ public abstract class Pessoa {
 			throw e;
 		}
 		
+		// falta aplicar o erro
 		this.dataNascimento = dataNascimento;
 	}
 	
