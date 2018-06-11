@@ -10,4 +10,16 @@ public abstract class Pessoa {
 		this.dataNascimento = dataNascimento;
 	}
 	
+	protected String getNome() {
+		return this.nome;
+	}
+	
+	protected String getCpf() {
+		return this.cpf;
+	}
+	
+	protected String getDataNascimento() {
+		return this.dataNascimento;
+	}
+	
 }
