@@ -10,4 +10,16 @@ public class Cliente extends Pessoa {
 		this.email = email;
 		this.numeroCartao = numeroCartao;
 	}
+	public String getPassaporte() {
+		return this.passaporte;
+	}
+	public String getEmail() {
+		return this.email;
+	}
+	public String getNumeroCartao() {
+		return this.numeroCartao;
+	}
+	public String getNome() {
+		return super.getNome();
+	}
 }
