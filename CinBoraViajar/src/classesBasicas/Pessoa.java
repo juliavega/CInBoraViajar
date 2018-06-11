@@ -1,13 +1,13 @@
 package classesBasicas;
 
 //abstrata
-public class Pessoa {
-	private String nome, cpf;
-	private int idade;
+public abstract class Pessoa {
+	private String nome, cpf, dataNascimento;
 	
-	Pessoa(String nome, String cpf, int idade) {
+	protected Pessoa(String nome, String cpf, String dataNascimento) {
 		this.nome = nome;
 		this.cpf = cpf;
-		this.idade = idade;
+		this.dataNascimento = dataNascimento;
 	}
+	
 }
