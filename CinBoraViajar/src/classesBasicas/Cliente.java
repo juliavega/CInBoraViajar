@@ -22,4 +22,10 @@ public class Cliente extends Pessoa {
 	public String getNome() {
 		return super.getNome();
 	}
+	public String getCpf() {
+		return super.getCpf();
+	}
+	public String getDataNascimento() {
+		return super.getDataNascimento();
+	}
 }
