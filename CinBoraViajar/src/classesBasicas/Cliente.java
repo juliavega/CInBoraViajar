@@ -1,6 +1,7 @@
 package classesBasicas;
 
 import erros.cpfInvalidoException;
+import erros.nomeMuitoLongoException;
 
 public class Cliente extends Pessoa {
 
@@ -8,7 +9,7 @@ public class Cliente extends Pessoa {
 	private String passaporte, email, numeroCartao;
 
 	public Cliente(String nome, String cpf, String dataNascimento, String passaporte, String email, String numeroCartao)
-			throws cpfInvalidoException {
+			throws nomeMuitoLongoException, cpfInvalidoException {
 		super(nome, cpf, dataNascimento);
 		this.passaporte = passaporte;
 		this.email = email;
