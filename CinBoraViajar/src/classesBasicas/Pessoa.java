@@ -28,7 +28,7 @@ public abstract class Pessoa {
 			throw e;
 		}
 		
-		// Falta aplicar o erro
+		// falta aplicar o erro
 		this.dataNascimento = dataNascimento;
 	}
 	
