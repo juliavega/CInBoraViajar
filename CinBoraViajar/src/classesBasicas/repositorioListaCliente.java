@@ -34,5 +34,26 @@ public class repositorioListaCliente {
 			throw e;
 		}
 	}
+	
+	public void atualizar() {
+		
+	}
+	
+	public Cliente procurar(Cliente cliente) throws clienteNaoEncontradoException{
+		Cliente resposta;
+		resposta = null;
+		if (this.cliente != null) {			
+			if (this.cliente.equals(cliente)) {
+				resposta = this.cliente;
+			} else {
+				this.proximo.procurar(cliente);
+			}
+		} else {
+			clienteNaoEncontradoException e;
+			e = new clienteNaoEncontradoException();
+			throw e;
+		}
+		return resposta;
+	}
 
 }
