@@ -1,4 +1,4 @@
-package repositorios;
+package classesBasicas;
 
 public class repositorioListaFuncionario {
 

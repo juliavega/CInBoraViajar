@@ -70,4 +70,8 @@ public class Cliente extends Pessoa {
 	public String getDataNascimento() {
 		return super.getDataNascimento();
 	}
+	
+	public boolean equals(Cliente cliente) {
+		return (this.getCpf().equals(cliente.getCpf()));
+	}
 }
