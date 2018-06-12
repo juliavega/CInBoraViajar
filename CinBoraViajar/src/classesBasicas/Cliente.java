@@ -1,6 +1,7 @@
 package classesBasicas;
 
 import erros.cpfInvalidoException;
+import erros.emailInvalidoException;
 import erros.nomeMuitoLongoException;
 import erros.numeroCartaoInvalidoException;
 import erros.passaporteInvalidoException;
@@ -12,16 +13,18 @@ public class Cliente extends Pessoa {
 
 	// Construtor classe Cliente
 	public Cliente(String nome, String cpf, String dataNascimento, String email, String numeroCartao)
-			throws nomeMuitoLongoException, cpfInvalidoException, numeroCartaoInvalidoException {
+			throws nomeMuitoLongoException, cpfInvalidoException, numeroCartaoInvalidoException, emailInvalidoException {
 		super(nome, cpf, dataNascimento);
-		this.passaporte = null;
-		this.email = email;
 		
+		this.passaporte = null;
+		
+		this.email = email;
+
 		// Checa a quantidade de digitos do número do cartão
 		if (numeroCartao.length() == 16) {
-			this.numeroCartao = numeroCartao;			
-			
-		// Erro se for inválido
+			this.numeroCartao = numeroCartao;
+
+			// Erro se for inválido
 		} else {
 			numeroCartaoInvalidoException e;
 			e = new numeroCartaoInvalidoException();
@@ -31,19 +34,19 @@ public class Cliente extends Pessoa {
 
 	// Metodos
 	public void setPassaporte(String passaporte) throws passaporteInvalidoException {
-		
+
 		// Checa a quantidade de dígitos do passaporte se é valido
 		if (passaporte.length() == 8) {
 			this.passaporte = passaporte;
-			
-		// Erro se for inválido (diferente de 8)
+
+			// Erro se for inválido (diferente de 8)
 		} else {
 			passaporteInvalidoException e;
 			e = new passaporteInvalidoException();
 			throw e;
 		}
 	}
-	
+
 	public String getPassaporte() {
 		return this.passaporte;
 	}
