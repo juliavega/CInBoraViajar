@@ -28,4 +28,24 @@ public class PacoteViagem {
 		}
 		this.duracao = duracao;
 	}
+	
+	public String getTipo() {
+		return this.tipo;
+	}
+	
+	public Cliente getCliente() {
+		return this.cliente;
+	}
+	
+	public Destino getDestino() {
+		return this.destino;
+	}
+	
+	public Double getValor() {
+		return this.valor;
+	}
+	
+	public int getDuracao() {
+		return this.duracao;
+	}
 }

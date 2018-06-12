@@ -9,6 +9,19 @@ public class Destino {
 	public Destino(String pais, String cidade, String hospedagem) {
 		this.pais = pais;
 		this.cidade = cidade;
-		this.hospedagem = hospedagem;
+		this.hospedagem = hospedagem;	
+	}
+
+	public String getPais() {
+		return this.pais;
+	}
+	
+	public String getCidade() {
+		return this.cidade;
+	}
+	
+	public String getHospedagem() {
+		return this.hospedagem;
+		
 	}
 }
