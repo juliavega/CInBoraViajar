@@ -48,4 +48,5 @@ public class PacoteViagem {
 	public int getDuracao() {
 		return this.duracao;
 	}
+	
 }

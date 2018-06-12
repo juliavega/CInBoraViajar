@@ -19,9 +19,8 @@ public class Destino {
 	public String getCidade() {
 		return this.cidade;
 	}
-	
+
 	public String getHospedagem() {
-		return this.hospedagem;
-		
+		return this.hospedagem;	
 	}
 }
