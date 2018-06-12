@@ -2,6 +2,7 @@ package classesBasicas;
 
 import erros.cpfInvalidoException;
 import erros.nomeMuitoLongoException;
+import erros.salarioMuitoBaixoException;
 
 public class Funcionario extends Pessoa {
 
@@ -11,10 +12,18 @@ public class Funcionario extends Pessoa {
 	
 	// Construtor classe Funcionario
 	public Funcionario(String nome, String cpf, String dataNascimento, String cargo, double salario)
-			throws nomeMuitoLongoException, cpfInvalidoException {
+			throws nomeMuitoLongoException, cpfInvalidoException, salarioMuitoBaixoException {
 		super(nome, cpf, dataNascimento);
 		this.cargo = cargo;
-		this.salario = salario;
+		
+		// Erro do salário abaixo do mínimo
+		if (salario >= 954) {
+			this.salario = salario;			
+		} else {
+			salarioMuitoBaixoException e;
+			e = new salarioMuitoBaixoException();
+			throw e;
+		}
 	}
 	
 	// Metodos
