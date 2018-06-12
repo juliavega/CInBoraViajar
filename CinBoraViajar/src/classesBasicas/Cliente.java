@@ -7,7 +7,8 @@ public class Cliente extends Pessoa {
 
 	// Atributos exclusivos da classe Cliente
 	private String passaporte, email, numeroCartao;
-
+	
+	//Construtor classe Cliente
 	public Cliente(String nome, String cpf, String dataNascimento, String passaporte, String email, String numeroCartao)
 			throws nomeMuitoLongoException, cpfInvalidoException {
 		super(nome, cpf, dataNascimento);
@@ -16,6 +17,7 @@ public class Cliente extends Pessoa {
 		this.numeroCartao = numeroCartao;
 	}
 
+	//Metodos
 	public String getPassaporte() {
 		return this.passaporte;
 	}
