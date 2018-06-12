@@ -1,5 +1,7 @@
 package classesBasicas;
 
+import erros.valorPacoteInvalidoException;
+
 public class PacoteViagem {
 	
 	//Atributos exclusivos da classe PacoteViagem
@@ -10,11 +12,19 @@ public class PacoteViagem {
 	private int duracao;
 	
 	//Construtor da classe PacoteViagem
-	public PacoteViagem (String tipo, Cliente cliente, Destino destino, double valor, int duracao) {
+	public PacoteViagem (String tipo, Cliente cliente, Destino destino, double valor, int duracao) 
+			throws valorPacoteInvalidoException {
 		this.tipo = tipo;
 		this.cliente = cliente;
 		this.destino = destino;
-		this.valor = valor;
+		
+		if (valor >= 0) {			
+			this.valor = valor;
+		} else {
+			valorPacoteInvalidoException e;
+			e = new valorPacoteInvalidoException();
+			throw e;
+		}
 		this.duracao = duracao;
 	}
 }
