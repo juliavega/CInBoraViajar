@@ -34,15 +34,15 @@ public class repositorioListaCliente {
 			throw e;
 		}
 	}
-	
+
 	public void atualizar() {
-		
+
 	}
-	
-	public Cliente procurar(Cliente cliente) throws clienteNaoEncontradoException{
+
+	public Cliente procurar(Cliente cliente) throws clienteNaoEncontradoException {
 		Cliente resposta;
 		resposta = null;
-		if (this.cliente != null) {			
+		if (this.cliente != null) {
 			if (this.cliente.equals(cliente)) {
 				resposta = this.cliente;
 			} else {
@@ -55,5 +55,4 @@ public class repositorioListaCliente {
 		}
 		return resposta;
 	}
-
 }
