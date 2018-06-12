@@ -18,6 +18,7 @@ public class PacoteViagem {
 		this.cliente = cliente;
 		this.destino = destino;
 		
+		// Verifica se o valor do pacote é menor que 0
 		if (valor >= 0) {			
 			this.valor = valor;
 		} else {
