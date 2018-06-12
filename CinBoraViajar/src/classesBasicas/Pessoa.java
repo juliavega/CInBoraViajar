@@ -44,4 +44,8 @@ public abstract class Pessoa {
 		return this.dataNascimento;
 	}
 	
+	private void splitDataNascimento(String dataNascimento) {
+		String [] array = new String [3];
+		array = dataNascimento.split("/");
+	}
 }
