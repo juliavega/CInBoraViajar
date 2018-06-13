@@ -1,6 +1,7 @@
 package classesBasicas;
 
 import erros.cpfInvalidoException;
+import erros.dataNascimentoInvalidaException;
 import erros.nomeMuitoLongoException;
 import erros.salarioMuitoBaixoException;
 
@@ -12,7 +13,7 @@ public class Funcionario extends Pessoa {
 	
 	// Construtor classe Funcionario
 	public Funcionario(String nome, String cpf, String dataNascimento, String cargo, double salario)
-			throws nomeMuitoLongoException, cpfInvalidoException, salarioMuitoBaixoException {
+			throws nomeMuitoLongoException, cpfInvalidoException, salarioMuitoBaixoException, dataNascimentoInvalidaException {
 		super(nome, cpf, dataNascimento);
 		this.cargo = cargo;
 		

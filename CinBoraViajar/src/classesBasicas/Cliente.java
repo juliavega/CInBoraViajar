@@ -1,6 +1,7 @@
 package classesBasicas;
 
 import erros.cpfInvalidoException;
+import erros.dataNascimentoInvalidaException;
 import erros.emailInvalidoException;
 import erros.nomeMuitoLongoException;
 import erros.numeroCartaoInvalidoException;
@@ -13,7 +14,7 @@ public class Cliente extends Pessoa {
 
 	// Construtor classe Cliente
 	public Cliente(String nome, String cpf, String dataNascimento, String email, String numeroCartao)
-			throws nomeMuitoLongoException, cpfInvalidoException, numeroCartaoInvalidoException, emailInvalidoException {
+			throws nomeMuitoLongoException, cpfInvalidoException, numeroCartaoInvalidoException, emailInvalidoException, dataNascimentoInvalidaException {
 		super(nome, cpf, dataNascimento);
 		
 		this.passaporte = null;
