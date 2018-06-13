@@ -11,6 +11,7 @@ public class PacoteViagem {
 	private double valor;
 	private int duracao;
 	private String id;
+	
 	//Construtor da classe PacoteViagem
 	public PacoteViagem (String tipo, Cliente cliente, Destino destino, double valor, int duracao, String id) 
 			throws ValorPacoteInvalidoException {
