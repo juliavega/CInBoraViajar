@@ -47,7 +47,7 @@ public class RepositorioListaDestino implements RepositorioDestino {
 		}
 	}
 
-	public void atualizar(Destino destino) throws DestinoNaoEncontradoException {
+	public void atualizar(Destino destino) throws DestinoNaoEncontradoException, DestinoJaCadastradoException {
 		Destino destinoAnterior;
 		destinoAnterior = procurar(destino.getCidade());
 		remover(destinoAnterior.getCidade());
