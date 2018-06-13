@@ -1,6 +1,7 @@
 package repositorios;
 import interfaces.RepositorioDestino;
 import classesBasicas.Destino;
+import erros.ClienteJaCadastradoException;
 import erros.DestinoNaoEncontradoException;
 
 public class RepositorioListaDestino implements RepositorioDestino {
@@ -12,12 +13,18 @@ public class RepositorioListaDestino implements RepositorioDestino {
 		this.proximo = null;
 	}
 
-	public void inserir(Destino destino) {
+	public void inserir(Destino destino) throws DestinoJaCadastradoException {
 		if (this.destino == null) {
 			this.destino = destino;
 			this.proximo = new RepositorioListaDestino();
 		} else {
-			this.proximo.inserir(destino);
+			if (this.destino.equals(destino)) {
+				DestinoJaCadastradoException e;
+				e = new DestinoJaCadastradoException();
+				throw e;
+			} else {					
+				this.proximo.inserir(destino);
+			}
 		}
 	}
 
