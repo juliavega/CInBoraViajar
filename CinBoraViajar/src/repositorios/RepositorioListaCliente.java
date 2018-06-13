@@ -36,8 +36,11 @@ public class RepositorioListaCliente implements RepositorioCliente {
 		}
 	}
 
-	public void atualizar(Cliente clienteAnterior, Cliente clienteNovo) {
-		
+	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException{
+		Cliente clienteAnterior;
+		clienteAnterior = procurar(cliente.getCpf());
+		remover(clienteAnterior);
+		inserir(cliente);
 	}
 
 	public Cliente procurar(String cpf) throws ClienteNaoEncontradoException {

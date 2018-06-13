@@ -25,7 +25,7 @@ public class RepositorioArrayCliente implements RepositorioCliente{
 
 
 	@Override
-	public void atualizar(Cliente clienteAnterior, Cliente clienteNovo) throws ClienteNaoEncontradoException {
+	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException {
 		// TODO Auto-generated method stub
 		
 	}

@@ -36,7 +36,7 @@ public class RepositorioListaFuncionario implements RepositorioFuncionario{
 		}
 	}
 
-	public void atualizar(Funcionario funcionarioAnterior, Funcionario funcionarioNovo) {
+	public void atualizar(Funcionario funcionario) {
 
 	}
 

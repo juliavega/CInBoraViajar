@@ -23,7 +23,7 @@ public class RepositorioArrayDestino implements RepositorioDestino{
 	}
 
 	@Override
-	public void atualizar(Destino destinoAnterior, Destino destinoNovo) throws DestinoNaoEncontradoException {
+	public void atualizar(Destino destino) throws DestinoNaoEncontradoException {
 		// TODO Auto-generated method stub
 		
 	}

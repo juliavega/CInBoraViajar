@@ -36,7 +36,7 @@ public class RepositorioListaPacoteViagem implements RepositorioPacoteViagem{
 		}
 	}
 	
-	public void atualizar(PacoteViagem pacoteViagemAnterior, PacoteViagem pacoteViagemNovo) {
+	public void atualizar(PacoteViagem pacoteViagem) {
 		
 	}
 	

@@ -36,7 +36,7 @@ public class RepositorioListaDestino implements RepositorioDestino {
 		}
 	}
 
-	public void atualizar(Destino destinoAnterior, Destino destinoNovo) {
+	public void atualizar(Destino destino) {
 		
 	}
 

@@ -1,34 +1,34 @@
 package repositorios;
 
-import classesBasicas.PacoteViagem;
-import erros.PacoteNaoEncontradoException;
-import interfaces.RepositorioPacoteViagem;
+import classesBasicas.Funcionario;
+import erros.FuncionarioNaoEncontradoException;
+import interfaces.RepositorioFuncionario;
 
-public class RepositorioArrayFuncionario implements RepositorioPacoteViagem{
+public class RepositorioArrayFuncionario implements RepositorioFuncionario {
 
 	@Override
-	public void inserir(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException {
+	public void inserir(Funcionario funcionario) throws FuncionarioNaoEncontradoException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void remover(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException {
+	public void atualizar(Funcionario funcionario)
+			throws FuncionarioNaoEncontradoException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public PacoteViagem procurar(String id) throws PacoteNaoEncontradoException {
+	public void remover(Funcionario funcionario) throws FuncionarioNaoEncontradoException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Funcionario procurar(String cpf) throws FuncionarioNaoEncontradoException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void atualizar(PacoteViagem pacoteViagemAnterior, PacoteViagem pacoteViagemNovo)
-			throws PacoteNaoEncontradoException {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

@@ -25,7 +25,7 @@ public class RepositorioArrayPacoteViagem implements RepositorioPacoteViagem{
 	}
 
 	@Override
-	public void atualizar(PacoteViagem pacoteViagemAnterior, PacoteViagem pacoteViagemNovo)
+	public void atualizar(PacoteViagem pacoteViagem)
 			throws PacoteNaoEncontradoException {
 		// TODO Auto-generated method stub
 		
