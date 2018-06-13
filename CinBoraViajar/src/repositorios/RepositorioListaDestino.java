@@ -40,14 +40,14 @@ public class RepositorioListaDestino {
 
 	}
 
-	public Destino procurar(Destino destino) throws DestinoNaoEncontradoException {
+	public Destino procurar(String cidade) throws DestinoNaoEncontradoException {
 		Destino resposta;
 		resposta = null;
 		if (this.destino != null) {
-			if (this.destino.equals(destino)) {
+			if (this.destino.getCidade().equals(destino)) {
 				resposta = this.destino;
 			} else {
-				this.proximo.procurar(destino);
+				this.proximo.procurar(cidade);
 			}
 		} else {
 			DestinoNaoEncontradoException e;

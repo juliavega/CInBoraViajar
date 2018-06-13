@@ -40,14 +40,14 @@ public class RepositorioListaFuncionario {
 
 	}
 
-	public Funcionario procurar(Funcionario funcionario) throws FuncionarioNaoEncontradoException {
+	public Funcionario procurar(String cpf) throws FuncionarioNaoEncontradoException {
 		Funcionario resposta;
 		resposta = null;
 		if (this.funcionario != null) {
-			if (this.funcionario.equals(funcionario)) {
+			if (this.funcionario.getCpf().equals(cpf)) {
 				resposta = this.funcionario;
 			} else {
-				this.proximo.procurar(funcionario);
+				this.proximo.procurar(cpf);
 			}
 		} else {
 			FuncionarioNaoEncontradoException e;

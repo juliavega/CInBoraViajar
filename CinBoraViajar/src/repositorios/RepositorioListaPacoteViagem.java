@@ -40,14 +40,14 @@ public class RepositorioListaPacoteViagem {
 		
 	}
 	
-	public PacoteViagem procurar(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException {
+	public PacoteViagem procurar(String id) throws PacoteNaoEncontradoException {
 		PacoteViagem resposta;
 		resposta = null;
 		if (this.pacoteViagem != null) {
-			if (this.pacoteViagem.equals(pacoteViagem)) {
+			if (this.pacoteViagem.getId().equals(id)) {
 				resposta = this.pacoteViagem;
 			} else {
-				this.proximo.procurar(pacoteViagem);
+				this.proximo.procurar(id);
 			}
 		} else {
 			PacoteNaoEncontradoException e;

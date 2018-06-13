@@ -37,17 +37,17 @@ public class RepositorioListaCliente {
 	}
 
 	public void atualizar() {
-
+		
 	}
 
-	public Cliente procurar(Cliente cliente) throws ClienteNaoEncontradoException {
+	public Cliente procurar(String cpf) throws ClienteNaoEncontradoException {
 		Cliente resposta;
 		resposta = null;
 		if (this.cliente != null) {
-			if (this.cliente.equals(cliente)) {
+			if (this.cliente.getCpf().equals(cpf)) {
 				resposta = this.cliente;
 			} else {
-				this.proximo.procurar(cliente);
+				this.proximo.procurar(cpf);
 			}
 		} else {
 			ClienteNaoEncontradoException e;
