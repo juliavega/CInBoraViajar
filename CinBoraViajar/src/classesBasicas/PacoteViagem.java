@@ -10,13 +10,16 @@ public class PacoteViagem {
 	private Destino destino;
 	private double valor;
 	private int duracao;
-	
+	private String id;
 	//Construtor da classe PacoteViagem
-	public PacoteViagem (String tipo, Cliente cliente, Destino destino, double valor, int duracao) 
+	public PacoteViagem (String tipo, Cliente cliente, Destino destino, double valor, int duracao, String id) 
 			throws ValorPacoteInvalidoException {
 		this.tipo = tipo;
 		this.cliente = cliente;
 		this.destino = destino;
+		
+		// *FALTA CRIAR ERRO ID JA EXISTE
+		this.id = id;
 		
 		// Verifica se o valor do pacote é menor que 0
 		if (valor >= 0) {			
@@ -27,6 +30,9 @@ public class PacoteViagem {
 			throw e;
 		}
 		this.duracao = duracao;
+	}
+	public String getId() {
+		return this.id;
 	}
 	
 	public String getTipo() {
