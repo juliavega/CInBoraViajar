@@ -39,6 +39,11 @@ public class Funcionario extends Pessoa {
 	public String getNome() {
 		return super.getNome();
 	}
+	
+	// Chama o método setNome da abstrata
+	public void setNome(String nome) throws NomeMuitoLongoException {
+		super.setNome(nome);
+	}
 
 	public String getCpf() {
 		return super.getCpf();

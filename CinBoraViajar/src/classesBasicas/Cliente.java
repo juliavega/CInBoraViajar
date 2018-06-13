@@ -14,11 +14,12 @@ public class Cliente extends Pessoa {
 
 	// Construtor classe Cliente
 	public Cliente(String nome, String cpf, String dataNascimento, String email, String numeroCartao)
-			throws NomeMuitoLongoException, CpfInvalidoException, NumeroCartaoInvalidoException, EmailInvalidoException, DataNascimentoInvalidaException {
+			throws NomeMuitoLongoException, CpfInvalidoException, NumeroCartaoInvalidoException, EmailInvalidoException,
+			DataNascimentoInvalidaException {
 		super(nome, cpf, dataNascimento);
-		
+
 		this.passaporte = null;
-		
+
 		this.email = email;
 
 		// Checa a quantidade de digitos do número do cartão
@@ -55,9 +56,9 @@ public class Cliente extends Pessoa {
 	public String getEmail() {
 		return this.email;
 	}
-	
+
 	public void setEmail(String email) throws EmailInvalidoException {
-		if (email.contains("@")) {			
+		if (email.contains("@")) {
 			this.email = email;
 		} else {
 			EmailInvalidoException e;
@@ -74,6 +75,11 @@ public class Cliente extends Pessoa {
 		return super.getNome();
 	}
 
+	// Chama o método setNome da abstrata
+	public void setNome(String nome) throws NomeMuitoLongoException {
+		super.setNome(nome);
+	}
+
 	public String getCpf() {
 		return super.getCpf();
 	}
@@ -81,7 +87,7 @@ public class Cliente extends Pessoa {
 	public String getDataNascimento() {
 		return super.getDataNascimento();
 	}
-	
+
 	public boolean equals(Cliente cliente) {
 		return (this.getCpf().equals(cliente.getCpf()));
 	}

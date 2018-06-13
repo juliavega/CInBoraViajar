@@ -28,10 +28,10 @@ public abstract class Pessoa {
 			e = new CpfInvalidoException();
 			throw e;
 		}
-		
+
 		// Checa a quantidade de digitos da data de nascimento
 		if (splitDataNascimento(dataNascimento)) {
-			this.dataNascimento = dataNascimento;			
+			this.dataNascimento = dataNascimento;
 		} else {
 			DataNascimentoInvalidaException e;
 			e = new DataNascimentoInvalidaException();
@@ -41,6 +41,17 @@ public abstract class Pessoa {
 
 	protected String getNome() {
 		return this.nome;
+	}
+	
+	// Método setNome se o nome entrar errado
+	protected void setNome(String nome) throws NomeMuitoLongoException {
+		if (nome.length() < 200) {
+			this.nome = nome;
+		} else {
+			NomeMuitoLongoException e;
+			e = new NomeMuitoLongoException();
+			throw e;
+		}
 	}
 
 	protected String getCpf() {
@@ -54,6 +65,6 @@ public abstract class Pessoa {
 	private boolean splitDataNascimento(String dataNascimento) {
 		String[] array = new String[3];
 		array = dataNascimento.split("/");
-		return array [0].length() == 2 && array [1].length() == 2 && array [2].length() == 4;
+		return array[0].length() == 2 && array[1].length() == 2 && array[2].length() == 4;
 	}
 }
