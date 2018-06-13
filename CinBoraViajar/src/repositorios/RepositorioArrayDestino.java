@@ -11,14 +11,6 @@ public class RepositorioArrayDestino implements RepositorioDestino{
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void atualizar(Destino destino) throws DestinoNaoEncontradoException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void remover(Destino destino) throws DestinoNaoEncontradoException {
 		// TODO Auto-generated method stub
 		
@@ -28,6 +20,12 @@ public class RepositorioArrayDestino implements RepositorioDestino{
 	public Destino procurar(String cidade) throws DestinoNaoEncontradoException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void atualizar(Destino destinoAnterior, Destino destinoNovo) throws DestinoNaoEncontradoException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
