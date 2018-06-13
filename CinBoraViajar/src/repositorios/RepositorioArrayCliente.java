@@ -12,12 +12,6 @@ public class RepositorioArrayCliente implements RepositorioCliente{
 	}
 
 	@Override
-	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void remover(Cliente cliente) throws ClienteNaoEncontradoException {
 		// TODO Auto-generated method stub
 		
@@ -27,5 +21,12 @@ public class RepositorioArrayCliente implements RepositorioCliente{
 	public Cliente procurar(String cpf) throws ClienteNaoEncontradoException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public void atualizar(Cliente clienteAnterior, Cliente clienteNovo) throws ClienteNaoEncontradoException {
+		// TODO Auto-generated method stub
+		
 	}
 }
