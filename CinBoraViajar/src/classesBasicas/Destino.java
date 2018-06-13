@@ -23,4 +23,8 @@ public class Destino {
 	public String getHospedagem() {
 		return this.hospedagem;	
 	}
+	
+	public void setHospedagem(String hospedagem) {
+		this.hospedagem = hospedagem;
+	}
 }
