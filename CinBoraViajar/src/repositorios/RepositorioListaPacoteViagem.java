@@ -50,8 +50,8 @@ public class RepositorioListaPacoteViagem implements RepositorioPacoteViagem {
 	public void atualizar(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException, PacoteViagemJaCadastradoException {
 		PacoteViagem pacoteViagemAnterior;
 		pacoteViagemAnterior = procurar(pacoteViagem.getId());
-		remover(pacoteViagemAnterior.getId());
-		inserir(pacoteViagem);
+		this.remover(pacoteViagemAnterior.getId());
+		this.inserir(pacoteViagem);
 	}
 
 	public PacoteViagem procurar(String id) throws PacoteNaoEncontradoException {
