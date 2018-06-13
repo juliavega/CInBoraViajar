@@ -1,5 +1,5 @@
 package repositorios;
-
+import interfaces.RepositorioFuncionario;
 import classesBasicas.Funcionario;
 import erros.FuncionarioNaoEncontradoException;
 

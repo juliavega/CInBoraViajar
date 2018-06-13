@@ -1,5 +1,5 @@
 package repositorios;
-
+import interfaces.RepositorioDestino;
 import classesBasicas.Destino;
 import erros.DestinoNaoEncontradoException;
 

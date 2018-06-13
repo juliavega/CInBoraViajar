@@ -1,5 +1,5 @@
 package repositorios;
-
+import interfaces.RepositorioCliente;
 import classesBasicas.Cliente;
 import erros.ClienteNaoEncontradoException;
 

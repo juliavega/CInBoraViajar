@@ -2,7 +2,7 @@ package repositorios;
 
 import classesBasicas.PacoteViagem;
 import erros.PacoteNaoEncontradoException;
-
+import interfaces.RepositorioPacoteViagem;
 public class RepositorioListaPacoteViagem {
 	private PacoteViagem pacoteViagem;
 	private RepositorioListaPacoteViagem proximo;
