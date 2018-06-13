@@ -55,6 +55,16 @@ public class Cliente extends Pessoa {
 	public String getEmail() {
 		return this.email;
 	}
+	
+	public void setEmail(String email) throws EmailInvalidoException {
+		if (email.contains("@")) {			
+			this.email = email;
+		} else {
+			EmailInvalidoException e;
+			e = new EmailInvalidoException();
+			throw e;
+		}
+	}
 
 	public String getNumeroCartao() {
 		return this.numeroCartao;
