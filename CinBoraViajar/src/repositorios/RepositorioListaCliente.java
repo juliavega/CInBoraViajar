@@ -36,7 +36,7 @@ public class RepositorioListaCliente implements RepositorioCliente {
 		}
 	}
 
-	public void atualizar(Cliente cliente) {
+	public void atualizar(Cliente clienteAnterior, Cliente clienteNovo) {
 		
 	}
 

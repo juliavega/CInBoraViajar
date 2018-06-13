@@ -3,7 +3,7 @@ import interfaces.RepositorioFuncionario;
 import classesBasicas.Funcionario;
 import erros.FuncionarioNaoEncontradoException;
 
-public class RepositorioListaFuncionario {
+public class RepositorioListaFuncionario implements RepositorioFuncionario{
 	private Funcionario funcionario;
 	private RepositorioListaFuncionario proximo;
 
@@ -36,7 +36,7 @@ public class RepositorioListaFuncionario {
 		}
 	}
 
-	public void atualizar() {
+	public void atualizar(Funcionario funcionarioAnterior, Funcionario funcionarioNovo) {
 
 	}
 

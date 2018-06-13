@@ -3,7 +3,7 @@ package repositorios;
 import classesBasicas.PacoteViagem;
 import erros.PacoteNaoEncontradoException;
 import interfaces.RepositorioPacoteViagem;
-public class RepositorioListaPacoteViagem {
+public class RepositorioListaPacoteViagem implements RepositorioPacoteViagem{
 	private PacoteViagem pacoteViagem;
 	private RepositorioListaPacoteViagem proximo;
 	
@@ -36,7 +36,7 @@ public class RepositorioListaPacoteViagem {
 		}
 	}
 	
-	public void atualizar() {
+	public void atualizar(PacoteViagem pacoteViagemAnterior, PacoteViagem pacoteViagemNovo) {
 		
 	}
 	
