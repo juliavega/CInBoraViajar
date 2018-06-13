@@ -1,11 +1,11 @@
 package interfaces;
 
 import classesBasicas.Cliente;
-import erros.clienteNaoEncontradoException;
+import erros.ClienteNaoEncontradoException;
 
 public interface RepositorioCliente {
-	public void inserir(Cliente cliente) throws clienteNaoEncontradoException;
-	public void atualizar(Cliente cliente) throws clienteNaoEncontradoException;
-	public void remover(Cliente cliente) throws clienteNaoEncontradoException;
-	public Cliente procurar(Cliente cliente) throws clienteNaoEncontradoException;
+	public void inserir(Cliente cliente) throws ClienteNaoEncontradoException;
+	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException;
+	public void remover(Cliente cliente) throws ClienteNaoEncontradoException;
+	public Cliente procurar(Cliente cliente) throws ClienteNaoEncontradoException;
 }
