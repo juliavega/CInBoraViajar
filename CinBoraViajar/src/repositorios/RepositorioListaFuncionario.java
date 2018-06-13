@@ -1,7 +1,7 @@
 package repositorios;
 
 import classesBasicas.Funcionario;
-import erros.funcionarioNaoEncontradoException;
+import erros.FuncionarioNaoEncontradoException;
 
 public class RepositorioListaFuncionario {
 	private Funcionario funcionario;
@@ -21,7 +21,7 @@ public class RepositorioListaFuncionario {
 		}
 	}
 
-	public void remover(Funcionario funcionario) throws funcionarioNaoEncontradoException {
+	public void remover(Funcionario funcionario) throws FuncionarioNaoEncontradoException {
 		if (this.funcionario != null) {
 			if (this.funcionario.equals(funcionario)) {
 				this.funcionario = this.proximo.funcionario;
@@ -30,8 +30,8 @@ public class RepositorioListaFuncionario {
 				this.proximo.remover(funcionario);
 			}
 		} else {
-			funcionarioNaoEncontradoException e;
-			e = new funcionarioNaoEncontradoException();
+			FuncionarioNaoEncontradoException e;
+			e = new FuncionarioNaoEncontradoException();
 			throw e;
 		}
 	}
@@ -40,7 +40,7 @@ public class RepositorioListaFuncionario {
 
 	}
 
-	public Funcionario procurar(Funcionario funcionario) throws funcionarioNaoEncontradoException {
+	public Funcionario procurar(Funcionario funcionario) throws FuncionarioNaoEncontradoException {
 		Funcionario resposta;
 		resposta = null;
 		if (this.funcionario != null) {
@@ -50,8 +50,8 @@ public class RepositorioListaFuncionario {
 				this.proximo.procurar(funcionario);
 			}
 		} else {
-			funcionarioNaoEncontradoException e;
-			e = new funcionarioNaoEncontradoException();
+			FuncionarioNaoEncontradoException e;
+			e = new FuncionarioNaoEncontradoException();
 			throw e;
 		}
 		return resposta;

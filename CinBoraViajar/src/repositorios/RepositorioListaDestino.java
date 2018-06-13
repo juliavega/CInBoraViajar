@@ -1,7 +1,7 @@
 package repositorios;
 
 import classesBasicas.Destino;
-import erros.destinoNaoEncontradoException;
+import erros.DestinoNaoEncontradoException;
 
 public class RepositorioListaDestino {
 	private Destino destino;
@@ -21,7 +21,7 @@ public class RepositorioListaDestino {
 		}
 	}
 
-	public void remover(Destino destino) throws destinoNaoEncontradoException {
+	public void remover(Destino destino) throws DestinoNaoEncontradoException {
 		if (this.destino != null) {
 			if (this.destino.equals(destino)) {
 				this.destino = this.proximo.destino;
@@ -30,8 +30,8 @@ public class RepositorioListaDestino {
 				this.proximo.remover(destino);
 			}
 		} else {
-			destinoNaoEncontradoException e;
-			e = new destinoNaoEncontradoException();
+			DestinoNaoEncontradoException e;
+			e = new DestinoNaoEncontradoException();
 			throw e;
 		}
 	}
@@ -40,7 +40,7 @@ public class RepositorioListaDestino {
 
 	}
 
-	public Destino procurar(Destino destino) throws destinoNaoEncontradoException {
+	public Destino procurar(Destino destino) throws DestinoNaoEncontradoException {
 		Destino resposta;
 		resposta = null;
 		if (this.destino != null) {
@@ -50,8 +50,8 @@ public class RepositorioListaDestino {
 				this.proximo.procurar(destino);
 			}
 		} else {
-			destinoNaoEncontradoException e;
-			e = new destinoNaoEncontradoException();
+			DestinoNaoEncontradoException e;
+			e = new DestinoNaoEncontradoException();
 			throw e;
 		}
 		return resposta;

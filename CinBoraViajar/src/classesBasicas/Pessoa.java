@@ -1,22 +1,22 @@
 package classesBasicas;
 
-import erros.cpfInvalidoException;
-import erros.dataNascimentoInvalidaException;
-import erros.nomeMuitoLongoException;
+import erros.CpfInvalidoException;
+import erros.DataNascimentoInvalidaException;
+import erros.NomeMuitoLongoException;
 
 //abstrata
 public abstract class Pessoa {
 	private String nome, cpf, dataNascimento;
 
 	protected Pessoa(String nome, String cpf, String dataNascimento)
-			throws nomeMuitoLongoException, cpfInvalidoException, dataNascimentoInvalidaException {
+			throws NomeMuitoLongoException, CpfInvalidoException, DataNascimentoInvalidaException {
 
 		// Checa se o nome tem mais que 200 caracteres (Invalido)
 		if (nome.length() < 200) {
 			this.nome = nome;
 		} else {
-			nomeMuitoLongoException e;
-			e = new nomeMuitoLongoException();
+			NomeMuitoLongoException e;
+			e = new NomeMuitoLongoException();
 			throw e;
 		}
 
@@ -24,8 +24,8 @@ public abstract class Pessoa {
 		if (cpf.length() == 11) {
 			this.cpf = cpf;
 		} else {
-			cpfInvalidoException e;
-			e = new cpfInvalidoException();
+			CpfInvalidoException e;
+			e = new CpfInvalidoException();
 			throw e;
 		}
 		
@@ -33,8 +33,8 @@ public abstract class Pessoa {
 		if (splitDataNascimento(dataNascimento)) {
 			this.dataNascimento = dataNascimento;			
 		} else {
-			dataNascimentoInvalidaException e;
-			e = new dataNascimentoInvalidaException();
+			DataNascimentoInvalidaException e;
+			e = new DataNascimentoInvalidaException();
 			throw e;
 		}
 	}

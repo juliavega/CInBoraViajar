@@ -1,7 +1,7 @@
 package repositorios;
 
 import classesBasicas.Cliente;
-import erros.clienteNaoEncontradoException;
+import erros.ClienteNaoEncontradoException;
 
 public class RepositorioListaCliente {
 	private Cliente cliente;
@@ -21,7 +21,7 @@ public class RepositorioListaCliente {
 		}
 	}
 
-	public void remover(Cliente cliente) throws clienteNaoEncontradoException {
+	public void remover(Cliente cliente) throws ClienteNaoEncontradoException {
 		if (this.cliente != null) {
 			if (this.cliente.equals(cliente)) {
 				this.cliente = this.proximo.cliente;
@@ -30,8 +30,8 @@ public class RepositorioListaCliente {
 				this.proximo.remover(cliente);
 			}
 		} else {
-			clienteNaoEncontradoException e;
-			e = new clienteNaoEncontradoException();
+			ClienteNaoEncontradoException e;
+			e = new ClienteNaoEncontradoException();
 			throw e;
 		}
 	}
@@ -40,7 +40,7 @@ public class RepositorioListaCliente {
 
 	}
 
-	public Cliente procurar(Cliente cliente) throws clienteNaoEncontradoException {
+	public Cliente procurar(Cliente cliente) throws ClienteNaoEncontradoException {
 		Cliente resposta;
 		resposta = null;
 		if (this.cliente != null) {
@@ -50,8 +50,8 @@ public class RepositorioListaCliente {
 				this.proximo.procurar(cliente);
 			}
 		} else {
-			clienteNaoEncontradoException e;
-			e = new clienteNaoEncontradoException();
+			ClienteNaoEncontradoException e;
+			e = new ClienteNaoEncontradoException();
 			throw e;
 		}
 		return resposta;

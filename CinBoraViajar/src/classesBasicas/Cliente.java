@@ -1,11 +1,11 @@
 package classesBasicas;
 
-import erros.cpfInvalidoException;
-import erros.dataNascimentoInvalidaException;
-import erros.emailInvalidoException;
-import erros.nomeMuitoLongoException;
-import erros.numeroCartaoInvalidoException;
-import erros.passaporteInvalidoException;
+import erros.CpfInvalidoException;
+import erros.DataNascimentoInvalidaException;
+import erros.EmailInvalidoException;
+import erros.NomeMuitoLongoException;
+import erros.NumeroCartaoInvalidoException;
+import erros.PassaporteInvalidoException;
 
 public class Cliente extends Pessoa {
 
@@ -14,7 +14,7 @@ public class Cliente extends Pessoa {
 
 	// Construtor classe Cliente
 	public Cliente(String nome, String cpf, String dataNascimento, String email, String numeroCartao)
-			throws nomeMuitoLongoException, cpfInvalidoException, numeroCartaoInvalidoException, emailInvalidoException, dataNascimentoInvalidaException {
+			throws NomeMuitoLongoException, CpfInvalidoException, NumeroCartaoInvalidoException, EmailInvalidoException, DataNascimentoInvalidaException {
 		super(nome, cpf, dataNascimento);
 		
 		this.passaporte = null;
@@ -27,14 +27,14 @@ public class Cliente extends Pessoa {
 
 			// Erro se for inválido
 		} else {
-			numeroCartaoInvalidoException e;
-			e = new numeroCartaoInvalidoException();
+			NumeroCartaoInvalidoException e;
+			e = new NumeroCartaoInvalidoException();
 			throw e;
 		}
 	}
 
 	// Metodos
-	public void setPassaporte(String passaporte) throws passaporteInvalidoException {
+	public void setPassaporte(String passaporte) throws PassaporteInvalidoException {
 
 		// Checa a quantidade de dígitos do passaporte se é valido
 		if (passaporte.length() == 8) {
@@ -42,8 +42,8 @@ public class Cliente extends Pessoa {
 
 			// Erro se for inválido (diferente de 8)
 		} else {
-			passaporteInvalidoException e;
-			e = new passaporteInvalidoException();
+			PassaporteInvalidoException e;
+			e = new PassaporteInvalidoException();
 			throw e;
 		}
 	}

@@ -1,7 +1,7 @@
 package repositorios;
 
 import classesBasicas.PacoteViagem;
-import erros.pacoteNaoEncontradoException;
+import erros.PacoteNaoEncontradoException;
 
 public class RepositorioListaPacoteViagem {
 	private PacoteViagem pacoteViagem;
@@ -21,7 +21,7 @@ public class RepositorioListaPacoteViagem {
 		}
 	}
 	
-	public void remover(PacoteViagem pacoteViagem) throws pacoteNaoEncontradoException {
+	public void remover(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException {
 		if (this.pacoteViagem != null) {
 			if (this.pacoteViagem.equals(pacoteViagem)) {
 				this.pacoteViagem = this.proximo.pacoteViagem;
@@ -30,8 +30,8 @@ public class RepositorioListaPacoteViagem {
 				this.proximo.remover(pacoteViagem);
 			}
 		} else {
-			pacoteNaoEncontradoException e;
-			e = new pacoteNaoEncontradoException();
+			PacoteNaoEncontradoException e;
+			e = new PacoteNaoEncontradoException();
 			throw e;
 		}
 	}
@@ -40,7 +40,7 @@ public class RepositorioListaPacoteViagem {
 		
 	}
 	
-	public PacoteViagem procurar(PacoteViagem pacoteViagem) throws pacoteNaoEncontradoException {
+	public PacoteViagem procurar(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException {
 		PacoteViagem resposta;
 		resposta = null;
 		if (this.pacoteViagem != null) {
@@ -50,8 +50,8 @@ public class RepositorioListaPacoteViagem {
 				this.proximo.procurar(pacoteViagem);
 			}
 		} else {
-			pacoteNaoEncontradoException e;
-			e = new pacoteNaoEncontradoException();
+			PacoteNaoEncontradoException e;
+			e = new PacoteNaoEncontradoException();
 			throw e;
 		}
 		return resposta;
