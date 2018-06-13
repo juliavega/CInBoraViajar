@@ -1,6 +1,7 @@
 package repositorios;
 import interfaces.RepositorioCliente;
 import classesBasicas.Cliente;
+import erros.ClienteJaCadastradoException;
 import erros.ClienteNaoEncontradoException;
 
 public class RepositorioListaCliente implements RepositorioCliente {
@@ -12,7 +13,8 @@ public class RepositorioListaCliente implements RepositorioCliente {
 		this.proximo = null;
 	}
 
-	public void inserir(Cliente cliente) {
+	public void inserir(Cliente cliente) throws ClienteJaCadastradoException {
+		
 		if (this.cliente == null) {
 			this.cliente = cliente;
 			this.proximo = new RepositorioListaCliente();
@@ -39,7 +41,7 @@ public class RepositorioListaCliente implements RepositorioCliente {
 		}
 	}
 
-	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException{
+	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException, ClienteJaCadastradoException{
 		Cliente clienteAnterior;
 		clienteAnterior = procurar(cliente.getCpf());
 		remover(clienteAnterior.getCpf());
