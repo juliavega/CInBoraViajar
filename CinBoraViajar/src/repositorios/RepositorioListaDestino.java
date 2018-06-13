@@ -70,4 +70,5 @@ public class RepositorioListaDestino implements RepositorioDestino {
 		}
 		return resposta;
 	}
+	
 }
