@@ -1,4 +1,5 @@
 package repositorios;
+
 import interfaces.RepositorioCliente;
 import classesBasicas.Cliente;
 import erros.ClienteJaCadastradoException;
@@ -14,19 +15,24 @@ public class RepositorioListaCliente implements RepositorioCliente {
 	}
 
 	public void inserir(Cliente cliente) throws ClienteJaCadastradoException {
-		
 		if (this.cliente == null) {
 			this.cliente = cliente;
 			this.proximo = new RepositorioListaCliente();
 		} else {
-			this.proximo.inserir(cliente);
+			if (this.cliente.equals(cliente)) {
+				ClienteJaCadastradoException e;
+				e = new ClienteJaCadastradoException();
+				throw e;
+			} else {					
+				this.proximo.inserir(cliente);
+			}
 		}
 	}
 
 	public void remover(String cpf) throws ClienteNaoEncontradoException {
 		Cliente clienteAchado;
 		clienteAchado = this.procurar(cpf);
-		
+
 		if (this.cliente != null) {
 			if (this.cliente.equals(clienteAchado)) {
 				this.cliente = this.proximo.cliente;
@@ -41,11 +47,11 @@ public class RepositorioListaCliente implements RepositorioCliente {
 		}
 	}
 
-	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException, ClienteJaCadastradoException{
+	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException, ClienteJaCadastradoException {
 		Cliente clienteAnterior;
 		clienteAnterior = procurar(cliente.getCpf());
-		remover(clienteAnterior.getCpf());
-		inserir(cliente);
+		this.remover(clienteAnterior.getCpf());
+		this.inserir(cliente);
 	}
 
 	public Cliente procurar(String cpf) throws ClienteNaoEncontradoException {
@@ -64,5 +70,18 @@ public class RepositorioListaCliente implements RepositorioCliente {
 		}
 		return resposta;
 	}
+
+	// NÃO COPIEM ISSO!!!
+	/*public boolean temElemento(Cliente cliente) {
+		if (this.cliente != null) {
+			if (this.cliente.equals(cliente)) {
+				return true;
+			} else {
+				return this.proximo.temElemento(cliente);
+			}
+		} else {
+			return false;
+		}
+	}*/
 
 }
