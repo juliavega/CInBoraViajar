@@ -36,8 +36,11 @@ public class RepositorioListaFuncionario implements RepositorioFuncionario{
 		}
 	}
 
-	public void atualizar(Funcionario funcionario) {
-
+	public void atualizar(Funcionario funcionario) throws FuncionarioNaoEncontradoException {
+		Funcionario funcionarioAnterior;
+		funcionarioAnterior = procurar(funcionario.getCpf());
+		remover (funcionarioAnterior);
+		inserir (funcionario);
 	}
 
 	public Funcionario procurar(String cpf) throws FuncionarioNaoEncontradoException {
