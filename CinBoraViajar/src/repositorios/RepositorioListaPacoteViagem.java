@@ -3,6 +3,7 @@ package repositorios;
 import classesBasicas.PacoteViagem;
 import erros.PacoteNaoEncontradoException;
 import interfaces.RepositorioPacoteViagem;
+
 public class RepositorioListaPacoteViagem implements RepositorioPacoteViagem{
 	private PacoteViagem pacoteViagem;
 	private RepositorioListaPacoteViagem proximo;
@@ -36,8 +37,11 @@ public class RepositorioListaPacoteViagem implements RepositorioPacoteViagem{
 		}
 	}
 	
-	public void atualizar(PacoteViagem pacoteViagem) {
-		
+	public void atualizar(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException {
+		PacoteViagem pacoteViagemAnterior;
+		pacoteViagemAnterior = procurar(pacoteViagem.getId());
+		remover(pacoteViagemAnterior);
+		inserir(pacoteViagem);
 	}
 	
 	public PacoteViagem procurar(String id) throws PacoteNaoEncontradoException {
