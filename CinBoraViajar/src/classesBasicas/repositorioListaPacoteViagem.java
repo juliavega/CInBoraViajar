@@ -3,30 +3,30 @@ package classesBasicas;
 import erros.pacoteNaoEncontradoException;
 
 public class repositorioListaPacoteViagem {
-	private PacoteViagem pacoteviagem;
+	private PacoteViagem pacoteViagem;
 	private repositorioListaPacoteViagem proximo;
 	
 	public repositorioListaPacoteViagem() {
-		this.pacoteviagem = null;
+		this.pacoteViagem = null;
 		this.proximo = null;
 	}
 	
-	public void inserir(PacoteViagem pacoteviagem) {
-		if (this.pacoteviagem == null) {
-			this.pacoteviagem = pacoteviagem;
+	public void inserir(PacoteViagem pacoteViagem) {
+		if (this.pacoteViagem == null) {
+			this.pacoteViagem = pacoteViagem;
 			this.proximo = new repositorioListaPacoteViagem();
 		} else {
-			this.proximo.inserir(pacoteviagem);
+			this.proximo.inserir(pacoteViagem);
 		}
 	}
 	
-	public void remover(PacoteViagem pacoteviagem) throws pacoteNaoEncontradoException {
-		if (this.pacoteviagem != null) {
-			if (this.pacoteviagem.equals(pacoteviagem)) {
-				this.pacoteviagem = this.proximo.pacoteviagem;
+	public void remover(PacoteViagem pacoteViagem) throws pacoteNaoEncontradoException {
+		if (this.pacoteViagem != null) {
+			if (this.pacoteViagem.equals(pacoteViagem)) {
+				this.pacoteViagem = this.proximo.pacoteViagem;
 				this.proximo = this.proximo.proximo;
 			} else {
-				this.proximo.remover(pacoteviagem);
+				this.proximo.remover(pacoteViagem);
 			}
 		} else {
 			pacoteNaoEncontradoException e;
@@ -39,14 +39,14 @@ public class repositorioListaPacoteViagem {
 		
 	}
 	
-	public PacoteViagem procurar(PacoteViagem pacoteviagem) throws pacoteNaoEncontradoException {
+	public PacoteViagem procurar(PacoteViagem pacoteViagem) throws pacoteNaoEncontradoException {
 		PacoteViagem resposta;
 		resposta = null;
-		if (this.pacoteviagem != null) {
-			if (this.pacoteviagem.equals(pacoteviagem)) {
-				resposta = this.pacoteviagem;
+		if (this.pacoteViagem != null) {
+			if (this.pacoteViagem.equals(pacoteViagem)) {
+				resposta = this.pacoteViagem;
 			} else {
-				this.proximo.procurar(pacoteviagem);
+				this.proximo.procurar(pacoteViagem);
 			}
 		} else {
 			pacoteNaoEncontradoException e;
