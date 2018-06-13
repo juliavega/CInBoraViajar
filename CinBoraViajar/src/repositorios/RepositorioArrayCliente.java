@@ -1,30 +1,52 @@
+// deixar o inserir dinamico
 package repositorios;
 
 import classesBasicas.Cliente;
 import erros.ClienteNaoEncontradoException;
+import erros.LimiteAtingidoException;
 import interfaces.RepositorioCliente;
 
 public class RepositorioArrayCliente implements RepositorioCliente{
-	Cliente[] arrayCliente = new Cliente[1000];
+	private Cliente[] arrayCliente = new Cliente[1000];
+	private int contador = 0;
 	
-	public void inserir(Cliente clente) {
-		
+	public void inserir(Cliente cliente) throws LimiteAtingidoException {
+		if (this.contador < this.arrayCliente.length) {			
+			this.arrayCliente[contador] = cliente;
+			this.contador++;
+		} else {
+			LimiteAtingidoException e;
+			e = new LimiteAtingidoException();
+			throw e;
+		}
 	}
-
-	@Override
+	
+	// MUDAR O PROCURAR E O REMOVER PARA O CPF
 	public void remover(Cliente cliente) throws ClienteNaoEncontradoException {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
+	
 	public Cliente procurar(String cpf) throws ClienteNaoEncontradoException {
-		// TODO Auto-generated method stub
-		return null;
+		Cliente resposta = null;
+		boolean jaAchou = false;
+		for (int i = 0; i <= this.contador && !jaAchou; i++) {
+			if (this.arrayCliente[i].getCpf().equals(cpf)) {
+				resposta = this.arrayCliente[i];
+				jaAchou = true;
+			}
+		}
+		
+		if (jaAchou) {			
+			return resposta;
+		} else {
+			ClienteNaoEncontradoException e;
+			e = new ClienteNaoEncontradoException();
+			throw e;
+		}
 	}
 
 
-	@Override
 	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException {
 		// TODO Auto-generated method stub
 		
