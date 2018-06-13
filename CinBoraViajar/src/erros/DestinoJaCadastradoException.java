@@ -1,4 +1,4 @@
-package repositorios;
+package erros;
 
 public class DestinoJaCadastradoException extends Exception {
 	public DestinoJaCadastradoException () {
