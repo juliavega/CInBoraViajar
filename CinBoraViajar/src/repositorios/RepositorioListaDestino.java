@@ -2,6 +2,7 @@ package repositorios;
 import interfaces.RepositorioDestino;
 import classesBasicas.Destino;
 import erros.ClienteJaCadastradoException;
+import erros.DestinoJaCadastradoException;
 import erros.DestinoNaoEncontradoException;
 
 public class RepositorioListaDestino implements RepositorioDestino {
