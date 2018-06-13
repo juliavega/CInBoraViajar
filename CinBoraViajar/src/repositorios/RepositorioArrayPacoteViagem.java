@@ -1,34 +1,70 @@
 package repositorios;
 
+import classesBasicas.Cliente;
 import classesBasicas.PacoteViagem;
+import erros.ClienteNaoEncontradoException;
+import erros.LimiteAtingidoException;
 import erros.PacoteNaoEncontradoException;
 import interfaces.RepositorioPacoteViagem;
 
 public class RepositorioArrayPacoteViagem implements RepositorioPacoteViagem{
-
-	@Override
+	private PacoteViagem[] arrayPacoteViagem = new PacoteViagem[1000];
+	private int contador = 0;
+	
 	public void inserir(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException {
-		// TODO Auto-generated method stub
-		
+		if (this.contador < this.arrayPacoteViagem.length) {
+			this.arrayPacoteViagem[contador] = pacoteViagem;
+			this.contador++;
+		} else {
+			PacoteNaoEncontradoException e;
+			e = new PacoteNaoEncontradoException();
+			throw e;
+		}
 	}
 
-	@Override
 	public void remover(String id) throws PacoteNaoEncontradoException {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public PacoteViagem procurar(String id) throws PacoteNaoEncontradoException {
-		// TODO Auto-generated method stub
-		return null;
+		PacoteViagem resposta = null;
+		boolean jaAchou = false;
+		for (int i = 0; i <= this.contador && !jaAchou; i++) {
+			if (this.arrayPacoteViagem[i].getId().equals(id)) {
+				resposta = this.arrayPacoteViagem[i];
+				jaAchou = true;
+			}
+		}
+
+		if (jaAchou) {
+			return resposta;
+		} else {
+			PacoteNaoEncontradoException e;
+			e = new PacoteNaoEncontradoException();
+			throw e;
+		}
 	}
 
-	@Override
-	public void atualizar(PacoteViagem pacoteViagem)
-			throws PacoteNaoEncontradoException {
-		// TODO Auto-generated method stub
-		
+	public void atualizar(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException {
+		int indice = this.getIndice(pacoteViagem.getId());
+		arrayPacoteViagem[indice] = pacoteViagem;
 	}
-
+	
+	public int getIndice(String id) throws PacoteNaoEncontradoException {
+		int resposta = 0;
+		boolean jaAchou = false;
+		for (int i = 0; i <= this.contador && !jaAchou; i++) {
+			if (this.arrayPacoteViagem[i].getId().equals(id)) {
+				resposta = i;
+				jaAchou = true;
+			}
+		}
+		if (jaAchou) {
+			return resposta;
+		} else {
+			PacoteNaoEncontradoException e;
+			e = new PacoteNaoEncontradoException();
+			throw e;
+		}
+	}
 }
