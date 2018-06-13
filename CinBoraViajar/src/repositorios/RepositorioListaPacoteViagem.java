@@ -47,7 +47,7 @@ public class RepositorioListaPacoteViagem implements RepositorioPacoteViagem {
 		}
 	}
 
-	public void atualizar(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException {
+	public void atualizar(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException, PacoteViagemJaCadastradoException {
 		PacoteViagem pacoteViagemAnterior;
 		pacoteViagemAnterior = procurar(pacoteViagem.getId());
 		remover(pacoteViagemAnterior.getId());
