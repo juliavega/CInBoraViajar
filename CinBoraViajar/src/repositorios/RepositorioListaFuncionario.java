@@ -21,13 +21,16 @@ public class RepositorioListaFuncionario implements RepositorioFuncionario{
 		}
 	}
 
-	public void remover(Funcionario funcionario) throws FuncionarioNaoEncontradoException {
+	public void remover(String cpf) throws FuncionarioNaoEncontradoException {
+		Funcionario funcionarioAchado;
+		funcionarioAchado = this.procurar(cpf);
+		
 		if (this.funcionario != null) {
-			if (this.funcionario.equals(funcionario)) {
+			if (this.funcionario.equals(funcionarioAchado)) {
 				this.funcionario = this.proximo.funcionario;
 				this.proximo = this.proximo.proximo;
 			} else {
-				this.proximo.remover(funcionario);
+				this.proximo.remover(cpf);
 			}
 		} else {
 			FuncionarioNaoEncontradoException e;
@@ -39,7 +42,7 @@ public class RepositorioListaFuncionario implements RepositorioFuncionario{
 	public void atualizar(Funcionario funcionario) throws FuncionarioNaoEncontradoException {
 		Funcionario funcionarioAnterior;
 		funcionarioAnterior = procurar(funcionario.getCpf());
-		remover (funcionarioAnterior);
+		remover (funcionarioAnterior.getCpf());
 		inserir (funcionario);
 	}
 

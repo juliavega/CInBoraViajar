@@ -21,13 +21,16 @@ public class RepositorioListaCliente implements RepositorioCliente {
 		}
 	}
 
-	public void remover(Cliente cliente) throws ClienteNaoEncontradoException {
+	public void remover(String cpf) throws ClienteNaoEncontradoException {
+		Cliente clienteAchado;
+		clienteAchado = this.procurar(cpf);
+		
 		if (this.cliente != null) {
-			if (this.cliente.equals(cliente)) {
+			if (this.cliente.equals(clienteAchado)) {
 				this.cliente = this.proximo.cliente;
 				this.proximo = this.proximo.proximo;
 			} else {
-				this.proximo.remover(cliente);
+				this.proximo.remover(cpf);
 			}
 		} else {
 			ClienteNaoEncontradoException e;
@@ -39,7 +42,7 @@ public class RepositorioListaCliente implements RepositorioCliente {
 	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException{
 		Cliente clienteAnterior;
 		clienteAnterior = procurar(cliente.getCpf());
-		remover(clienteAnterior);
+		remover(clienteAnterior.getCpf());
 		inserir(cliente);
 	}
 

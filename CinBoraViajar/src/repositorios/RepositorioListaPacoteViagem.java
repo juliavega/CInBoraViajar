@@ -22,13 +22,16 @@ public class RepositorioListaPacoteViagem implements RepositorioPacoteViagem{
 		}
 	}
 	
-	public void remover(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException {
+	public void remover(String id) throws PacoteNaoEncontradoException {
+		PacoteViagem pacoteViagemAchado;
+		pacoteViagemAchado = this.procurar(id);
+		
 		if (this.pacoteViagem != null) {
-			if (this.pacoteViagem.equals(pacoteViagem)) {
+			if (this.pacoteViagem.equals(pacoteViagemAchado)) {
 				this.pacoteViagem = this.proximo.pacoteViagem;
 				this.proximo = this.proximo.proximo;
 			} else {
-				this.proximo.remover(pacoteViagem);
+				this.proximo.remover(id);
 			}
 		} else {
 			PacoteNaoEncontradoException e;
@@ -40,7 +43,7 @@ public class RepositorioListaPacoteViagem implements RepositorioPacoteViagem{
 	public void atualizar(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException {
 		PacoteViagem pacoteViagemAnterior;
 		pacoteViagemAnterior = procurar(pacoteViagem.getId());
-		remover(pacoteViagemAnterior);
+		remover(pacoteViagemAnterior.getId());
 		inserir(pacoteViagem);
 	}
 	

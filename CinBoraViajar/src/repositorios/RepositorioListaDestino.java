@@ -21,13 +21,16 @@ public class RepositorioListaDestino implements RepositorioDestino {
 		}
 	}
 
-	public void remover(Destino destino) throws DestinoNaoEncontradoException {
+	public void remover(String cidade) throws DestinoNaoEncontradoException {
+		Destino destinoAchado;
+		destinoAchado = this.procurar(cidade);
+		
 		if (this.destino != null) {
-			if (this.destino.equals(destino)) {
+			if (this.destino.equals(destinoAchado)) {
 				this.destino = this.proximo.destino;
 				this.proximo = this.proximo.proximo;
 			} else {
-				this.proximo.remover(destino);
+				this.proximo.remover(cidade);
 			}
 		} else {
 			DestinoNaoEncontradoException e;
@@ -39,7 +42,7 @@ public class RepositorioListaDestino implements RepositorioDestino {
 	public void atualizar(Destino destino) throws DestinoNaoEncontradoException {
 		Destino destinoAnterior;
 		destinoAnterior = procurar(destino.getCidade());
-		remover(destinoAnterior);
+		remover(destinoAnterior.getCidade());
 		inserir(destino);
 	}
 

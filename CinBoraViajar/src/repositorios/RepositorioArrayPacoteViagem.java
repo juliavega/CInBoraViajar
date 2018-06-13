@@ -13,7 +13,7 @@ public class RepositorioArrayPacoteViagem implements RepositorioPacoteViagem{
 	}
 
 	@Override
-	public void remover(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException {
+	public void remover(String id) throws PacoteNaoEncontradoException {
 		// TODO Auto-generated method stub
 		
 	}

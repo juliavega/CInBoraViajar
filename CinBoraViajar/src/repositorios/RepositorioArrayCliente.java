@@ -22,8 +22,8 @@ public class RepositorioArrayCliente implements RepositorioCliente{
 	}
 	
 	// MUDAR O PROCURAR E O REMOVER PARA O CPF
-	public void remover(Cliente cliente) throws ClienteNaoEncontradoException {
-		// TODO Auto-generated method stub
+	public void remover(String cpf) throws ClienteNaoEncontradoException {
+		
 		
 	}
 	

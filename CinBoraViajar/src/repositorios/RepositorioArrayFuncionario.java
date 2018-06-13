@@ -20,7 +20,7 @@ public class RepositorioArrayFuncionario implements RepositorioFuncionario {
 	}
 
 	@Override
-	public void remover(Funcionario funcionario) throws FuncionarioNaoEncontradoException {
+	public void remover(String cpf) throws FuncionarioNaoEncontradoException {
 		// TODO Auto-generated method stub
 		
 	}

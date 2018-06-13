@@ -11,7 +11,7 @@ public class RepositorioArrayDestino implements RepositorioDestino{
 		// TODO Auto-generated method stub
 		
 	}
-	public void remover(Destino destino) throws DestinoNaoEncontradoException {
+	public void remover(String cidade) throws DestinoNaoEncontradoException {
 		// TODO Auto-generated method stub
 		
 	}
