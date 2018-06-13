@@ -6,12 +6,12 @@ import erros.ClienteNaoEncontradoException;
 import erros.LimiteAtingidoException;
 import interfaces.RepositorioCliente;
 
-public class RepositorioArrayCliente implements RepositorioCliente{
+public class RepositorioArrayCliente implements RepositorioCliente {
 	private Cliente[] arrayCliente = new Cliente[1000];
 	private int contador = 0;
-	
+
 	public void inserir(Cliente cliente) throws LimiteAtingidoException {
-		if (this.contador < this.arrayCliente.length) {			
+		if (this.contador < this.arrayCliente.length) {
 			this.arrayCliente[contador] = cliente;
 			this.contador++;
 		} else {
@@ -20,13 +20,11 @@ public class RepositorioArrayCliente implements RepositorioCliente{
 			throw e;
 		}
 	}
-	
-	// MUDAR O PROCURAR E O REMOVER PARA O CPF
+
 	public void remover(String cpf) throws ClienteNaoEncontradoException {
-		
-		
+
 	}
-	
+
 	public Cliente procurar(String cpf) throws ClienteNaoEncontradoException {
 		Cliente resposta = null;
 		boolean jaAchou = false;
@@ -36,8 +34,8 @@ public class RepositorioArrayCliente implements RepositorioCliente{
 				jaAchou = true;
 			}
 		}
-		
-		if (jaAchou) {			
+
+		if (jaAchou) {
 			return resposta;
 		} else {
 			ClienteNaoEncontradoException e;
@@ -46,9 +44,26 @@ public class RepositorioArrayCliente implements RepositorioCliente{
 		}
 	}
 
-
 	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException {
-		// TODO Auto-generated method stub
-		
+		int indice = this.getIndice(cliente.getCpf());
+		arrayCliente[indice] = cliente;
+	}
+
+	public int getIndice(String cpf) throws ClienteNaoEncontradoException {
+		int resposta = 0;
+		boolean jaAchou = false;
+		for (int i = 0; i <= this.contador && !jaAchou; i++) {
+			if (this.arrayCliente[i].getCpf().equals(cpf)) {
+				resposta = i;
+				jaAchou = true;
+			}
+		}
+		if (jaAchou) {
+			return resposta;
+		} else {
+			ClienteNaoEncontradoException e;
+			e = new ClienteNaoEncontradoException();
+			throw e;
+		}
 	}
 }
