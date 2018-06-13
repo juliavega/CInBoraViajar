@@ -3,7 +3,7 @@ import interfaces.RepositorioCliente;
 import classesBasicas.Cliente;
 import erros.ClienteNaoEncontradoException;
 
-public class RepositorioListaCliente {
+public class RepositorioListaCliente implements RepositorioCliente {
 	private Cliente cliente;
 	private RepositorioListaCliente proximo;
 
@@ -36,7 +36,7 @@ public class RepositorioListaCliente {
 		}
 	}
 
-	public void atualizar() {
+	public void atualizar(Cliente cliente) {
 		
 	}
 
@@ -56,4 +56,5 @@ public class RepositorioListaCliente {
 		}
 		return resposta;
 	}
+
 }

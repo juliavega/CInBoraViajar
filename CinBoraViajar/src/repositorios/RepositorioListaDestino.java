@@ -3,7 +3,7 @@ import interfaces.RepositorioDestino;
 import classesBasicas.Destino;
 import erros.DestinoNaoEncontradoException;
 
-public class RepositorioListaDestino {
+public class RepositorioListaDestino implements RepositorioDestino {
 	private Destino destino;
 	private RepositorioListaDestino proximo;
 
@@ -36,8 +36,8 @@ public class RepositorioListaDestino {
 		}
 	}
 
-	public void atualizar() {
-
+	public void atualizar(Destino destinoAnterior, Destino destinoNovo) {
+		
 	}
 
 	public Destino procurar(String cidade) throws DestinoNaoEncontradoException {
