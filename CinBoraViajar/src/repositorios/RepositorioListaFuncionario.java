@@ -47,7 +47,7 @@ public class RepositorioListaFuncionario implements RepositorioFuncionario {
 		}
 	}
 
-	public void atualizar(Funcionario funcionario) throws FuncionarioNaoEncontradoException {
+	public void atualizar(Funcionario funcionario) throws FuncionarioNaoEncontradoException, FuncionarioJaCadastradoException {
 		Funcionario funcionarioAnterior;
 		funcionarioAnterior = procurar(funcionario.getCpf());
 		remover(funcionarioAnterior.getCpf());
