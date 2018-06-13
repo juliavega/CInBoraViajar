@@ -1,5 +1,6 @@
 package repositorios;
 import interfaces.RepositorioDestino;
+import classesBasicas.Cliente;
 import classesBasicas.Destino;
 import erros.DestinoNaoEncontradoException;
 
@@ -36,8 +37,11 @@ public class RepositorioListaDestino implements RepositorioDestino {
 		}
 	}
 
-	public void atualizar(Destino destino) {
-		
+	public void atualizar(Destino destino) throws DestinoNaoEncontradoException {
+		Destino destinoAnterior;
+		destinoAnterior = procurar(destino.getCidade());
+		remover(destinoAnterior);
+		inserir(destino);
 	}
 
 	public Destino procurar(String cidade) throws DestinoNaoEncontradoException {
