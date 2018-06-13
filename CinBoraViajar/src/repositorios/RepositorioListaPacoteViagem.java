@@ -1,12 +1,13 @@
-package classesBasicas;
+package repositorios;
 
+import classesBasicas.PacoteViagem;
 import erros.pacoteNaoEncontradoException;
 
-public class repositorioListaPacoteViagem {
+public class RepositorioListaPacoteViagem {
 	private PacoteViagem pacoteViagem;
-	private repositorioListaPacoteViagem proximo;
+	private RepositorioListaPacoteViagem proximo;
 	
-	public repositorioListaPacoteViagem() {
+	public RepositorioListaPacoteViagem() {
 		this.pacoteViagem = null;
 		this.proximo = null;
 	}
@@ -14,7 +15,7 @@ public class repositorioListaPacoteViagem {
 	public void inserir(PacoteViagem pacoteViagem) {
 		if (this.pacoteViagem == null) {
 			this.pacoteViagem = pacoteViagem;
-			this.proximo = new repositorioListaPacoteViagem();
+			this.proximo = new RepositorioListaPacoteViagem();
 		} else {
 			this.proximo.inserir(pacoteViagem);
 		}

@@ -1,12 +1,13 @@
-package classesBasicas;
+package repositorios;
 
+import classesBasicas.Funcionario;
 import erros.funcionarioNaoEncontradoException;
 
-public class repositorioListaFuncionario {
+public class RepositorioListaFuncionario {
 	private Funcionario funcionario;
-	private repositorioListaFuncionario proximo;
+	private RepositorioListaFuncionario proximo;
 
-	public repositorioListaFuncionario() {
+	public RepositorioListaFuncionario() {
 		this.funcionario = null;
 		this.proximo = null;
 	}
@@ -14,7 +15,7 @@ public class repositorioListaFuncionario {
 	public void inserir(Funcionario funcionario) {
 		if (this.funcionario == null) {
 			this.funcionario = funcionario;
-			this.proximo = new repositorioListaFuncionario();
+			this.proximo = new RepositorioListaFuncionario();
 		} else {
 			this.proximo.inserir(funcionario);
 		}

@@ -1,12 +1,13 @@
-package classesBasicas;
+package repositorios;
 
+import classesBasicas.Cliente;
 import erros.clienteNaoEncontradoException;
 
-public class repositorioListaCliente {
+public class RepositorioListaCliente {
 	private Cliente cliente;
-	private repositorioListaCliente proximo;
+	private RepositorioListaCliente proximo;
 
-	public repositorioListaCliente() {
+	public RepositorioListaCliente() {
 		this.cliente = null;
 		this.proximo = null;
 	}
@@ -14,7 +15,7 @@ public class repositorioListaCliente {
 	public void inserir(Cliente cliente) {
 		if (this.cliente == null) {
 			this.cliente = cliente;
-			this.proximo = new repositorioListaCliente();
+			this.proximo = new RepositorioListaCliente();
 		} else {
 			this.proximo.inserir(cliente);
 		}

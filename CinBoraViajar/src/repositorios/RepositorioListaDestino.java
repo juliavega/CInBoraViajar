@@ -1,12 +1,13 @@
-package classesBasicas;
+package repositorios;
 
+import classesBasicas.Destino;
 import erros.destinoNaoEncontradoException;
 
-public class repositorioListaDestino {
+public class RepositorioListaDestino {
 	private Destino destino;
-	private repositorioListaDestino proximo;
+	private RepositorioListaDestino proximo;
 
-	public repositorioListaDestino() {
+	public RepositorioListaDestino() {
 		this.destino = null;
 		this.proximo = null;
 	}
@@ -14,7 +15,7 @@ public class repositorioListaDestino {
 	public void inserir(Destino destino) {
 		if (this.destino == null) {
 			this.destino = destino;
-			this.proximo = new repositorioListaDestino();
+			this.proximo = new RepositorioListaDestino();
 		} else {
 			this.proximo.inserir(destino);
 		}

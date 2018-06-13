@@ -1,12 +1,13 @@
-package classesBasicas;
+package repositorios;
 
+import classesBasicas.Pessoa;
 import erros.pessoaNaoEncontradaException;
 
-public class repositorioListaPessoa {
+public class RepositorioListaPessoa {
 	private Pessoa pessoa;
-	private repositorioListaPessoa proximo;
+	private RepositorioListaPessoa proximo;
 	
-	public repositorioListaPessoa() {
+	public RepositorioListaPessoa() {
 		this.pessoa = null;
 		this.proximo = null;
 	}
@@ -14,7 +15,7 @@ public class repositorioListaPessoa {
 	public void inserir(Pessoa pessoa) {
 		if (this.pessoa == null) {
 			this.pessoa = pessoa;
-			this.proximo = new repositorioListaPessoa();
+			this.proximo = new RepositorioListaPessoa();
 		} else {
 			this.proximo.inserir(pessoa);
 		}
