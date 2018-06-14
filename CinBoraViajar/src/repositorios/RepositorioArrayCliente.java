@@ -20,9 +20,14 @@ public class RepositorioArrayCliente implements RepositorioCliente {
 			throw e;
 		}
 	}
-
+	
+	//Criar variável auxiliar
 	public void remover(String cpf) throws ClienteNaoEncontradoException {
-
+		int indice = this.getIndice(cpf);
+		for (int i = 0; i < (arrayCliente.length - indice); i++) {
+			arrayCliente[indice + 1] = arrayCliente [indice];
+			indice++;
+		}
 	}
 
 	public Cliente procurar(String cpf) throws ClienteNaoEncontradoException {
