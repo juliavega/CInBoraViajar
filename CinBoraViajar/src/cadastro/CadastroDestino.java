@@ -19,7 +19,13 @@ public class CadastroDestino {
 	}
 
 	public void cadastrar(Destino destino) throws DestinoNaoEncontradoException, DestinoJaCadastradoException {
-		this.destinos.inserir(destino);
+		if (!this.destinos.existe(destino.getCidade())) {
+			this.destinos.inserir(destino);
+		} else {
+			DestinoJaCadastradoException e;
+			e = new DestinoJaCadastradoException();
+			throw e;
+		}
 	}
 
 	public void remover(String cidade) throws DestinoNaoEncontradoException {

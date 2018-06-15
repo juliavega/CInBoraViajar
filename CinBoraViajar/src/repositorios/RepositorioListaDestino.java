@@ -1,7 +1,7 @@
 package repositorios;
+
 import interfaces.RepositorioDestino;
 import classesBasicas.Destino;
-import erros.DestinoJaCadastradoException;
 import erros.DestinoNaoEncontradoException;
 
 public class RepositorioListaDestino implements RepositorioDestino {
@@ -13,25 +13,19 @@ public class RepositorioListaDestino implements RepositorioDestino {
 		this.proximo = null;
 	}
 
-	public void inserir(Destino destino) throws DestinoJaCadastradoException {
+	public void inserir(Destino destino) {
 		if (this.destino == null) {
 			this.destino = destino;
 			this.proximo = new RepositorioListaDestino();
 		} else {
-			if (this.destino.equals(destino)) {
-				DestinoJaCadastradoException e;
-				e = new DestinoJaCadastradoException();
-				throw e;
-			} else {					
-				this.proximo.inserir(destino);
-			}
+			this.proximo.inserir(destino);
 		}
 	}
 
 	public void remover(String cidade) throws DestinoNaoEncontradoException {
 		Destino destinoAchado;
 		destinoAchado = this.procurar(cidade);
-		
+
 		if (this.destino != null) {
 			if (this.destino.equals(destinoAchado)) {
 				this.destino = this.proximo.destino;
@@ -46,7 +40,7 @@ public class RepositorioListaDestino implements RepositorioDestino {
 		}
 	}
 
-	public void atualizar(Destino destino) throws DestinoNaoEncontradoException, DestinoJaCadastradoException {
+	public void atualizar(Destino destino) throws DestinoNaoEncontradoException {
 		Destino destinoAnterior;
 		destinoAnterior = procurar(destino.getCidade());
 		this.remover(destinoAnterior.getCidade());
@@ -68,5 +62,17 @@ public class RepositorioListaDestino implements RepositorioDestino {
 			throw e;
 		}
 		return resposta;
-	} 
+	}
+	
+	public boolean existe(String cidade) {
+		if (this.destino != null) {
+			if (this.destino.getCidade().equals(cidade)) {
+				return true;
+			} else {
+				return this.proximo.existe(cidade);
+			}
+		} else {
+			return false;
+		}
+	}
 }

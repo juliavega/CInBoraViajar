@@ -1,10 +1,7 @@
 package repositorios;
 
-import classesBasicas.Cliente;
 import classesBasicas.Destino;
-import erros.ClienteNaoEncontradoException;
 import erros.DestinoNaoEncontradoException;
-import erros.LimiteAtingidoException;
 import interfaces.RepositorioDestino;
 
 public class RepositorioArrayDestino implements RepositorioDestino{
@@ -53,6 +50,7 @@ public class RepositorioArrayDestino implements RepositorioDestino{
 		int indice = this.getIndice(destino.getCidade());
 		arrayDestino[indice] = destino;	
 	}
+	
 	public int getIndice(String cidade) throws DestinoNaoEncontradoException {
 		int resposta = 0;
 		boolean jaAchou = false;
@@ -69,5 +67,15 @@ public class RepositorioArrayDestino implements RepositorioDestino{
 			e = new DestinoNaoEncontradoException();
 			throw e;
 		}
+	}
+	
+	public boolean existe(String cidade) {
+		boolean resposta = false;
+		for (int i = 0; i < this.contador && !resposta; i++) {
+			if (this.arrayDestino[i].getCidade().equals(cidade)) {
+				resposta = true;
+			}
+		}
+		return resposta;
 	}
 }
