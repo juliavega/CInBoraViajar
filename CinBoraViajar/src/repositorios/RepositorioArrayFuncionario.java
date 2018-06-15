@@ -21,7 +21,13 @@ public class RepositorioArrayFuncionario implements RepositorioFuncionario {
 	}
 
 	public void remover(String cpf) throws FuncionarioNaoEncontradoException {
-		
+		int indice = this.getIndice(cpf);
+		int indiceaux = indice;
+		for (int i = 1; i < (arrayFuncionario.length - indice); i++) {
+			arrayFuncionario[indiceaux] = arrayFuncionario [indiceaux + 1];
+			indiceaux++;
+		}
+		arrayFuncionario[arrayFuncionario.length - 1] = null;
 	}
 
 	public Funcionario procurar(String cpf) throws FuncionarioNaoEncontradoException {

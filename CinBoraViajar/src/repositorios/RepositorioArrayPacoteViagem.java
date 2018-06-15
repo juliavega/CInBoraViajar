@@ -23,7 +23,13 @@ public class RepositorioArrayPacoteViagem implements RepositorioPacoteViagem{
 	}
 
 	public void remover(String id) throws PacoteNaoEncontradoException {
-		
+		int indice = this.getIndice(id);
+		int indiceaux = indice;
+		for (int i = 1; i < (arrayPacoteViagem.length - indice); i++) {
+			arrayPacoteViagem[indiceaux] = arrayPacoteViagem [indiceaux + 1];
+			indiceaux++;
+		}
+		arrayPacoteViagem[arrayPacoteViagem.length - 1] = null;
 	}
 
 	public PacoteViagem procurar(String id) throws PacoteNaoEncontradoException {
