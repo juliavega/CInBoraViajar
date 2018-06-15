@@ -70,4 +70,16 @@ public class RepositorioListaFuncionario implements RepositorioFuncionario {
 		}
 		return resposta;
 	}
+	
+	public boolean existe(String cpf) {
+		if (this.funcionario != null) {
+			if (this.funcionario.getCpf().equals(cpf)) {
+				return true;
+			} else {
+				return this.proximo.existe(cpf);
+			}
+		} else {
+			return false;
+		}
+	}
 }

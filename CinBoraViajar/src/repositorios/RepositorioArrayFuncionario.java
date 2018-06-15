@@ -70,4 +70,14 @@ public class RepositorioArrayFuncionario implements RepositorioFuncionario {
 			throw e;
 		}
 	}
+	
+	public boolean existe(String cpf) {
+		boolean resposta = false;
+		for (int i = 0; i <= this.contador && !resposta; i++) {
+			if (this.arrayFuncionario[i].getCpf().equals(cpf)) {
+				resposta = true;
+			}
+		}
+		return resposta;
+	}
 }

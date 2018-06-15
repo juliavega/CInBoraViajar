@@ -10,4 +10,5 @@ public interface RepositorioFuncionario {
 	public void atualizar(Funcionario funcionario) throws FuncionarioNaoEncontradoException, FuncionarioJaCadastradoException;
 	public void remover(String cpf) throws FuncionarioNaoEncontradoException;
 	public Funcionario procurar(String cpf) throws FuncionarioNaoEncontradoException;
+	public boolean existe(String cpf);
 }
