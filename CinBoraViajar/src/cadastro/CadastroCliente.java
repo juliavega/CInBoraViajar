@@ -20,14 +20,20 @@ public class CadastroCliente {
 	}
 
 	public void cadastrar(Cliente cliente) throws LimiteAtingidoException, ClienteJaCadastradoException {
-		this.clientes.inserir(cliente);
+		if (!this.clientes.existe(cliente.getCpf())) {			
+			this.clientes.inserir(cliente);
+		} else {
+			ClienteJaCadastradoException e;
+			e = new ClienteJaCadastradoException();
+			throw e;
+		}
 	}
 
 	public void remover(String cpf) throws ClienteNaoEncontradoException {
 		this.clientes.remover(cpf);
 	}
 
-	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException, ClienteJaCadastradoException {
+	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException {
 		this.clientes.atualizar(cliente);
 	}
 	

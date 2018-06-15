@@ -14,18 +14,12 @@ public class RepositorioListaCliente implements RepositorioCliente {
 		this.proximo = null;
 	}
 
-	public void inserir(Cliente cliente) throws ClienteJaCadastradoException {
+	public void inserir(Cliente cliente) {
 		if (this.cliente == null) {
 			this.cliente = cliente;
 			this.proximo = new RepositorioListaCliente();
-		} else {
-			if (this.cliente.equals(cliente)) {
-				ClienteJaCadastradoException e;
-				e = new ClienteJaCadastradoException();
-				throw e;
-			} else {					
-				this.proximo.inserir(cliente);
-			}
+		} else {			
+			this.proximo.inserir(cliente);
 		}
 	}
 
@@ -47,7 +41,7 @@ public class RepositorioListaCliente implements RepositorioCliente {
 		}
 	}
 
-	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException, ClienteJaCadastradoException {
+	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException {
 		Cliente clienteAnterior;
 		clienteAnterior = procurar(cliente.getCpf());
 		this.remover(clienteAnterior.getCpf());
@@ -71,17 +65,17 @@ public class RepositorioListaCliente implements RepositorioCliente {
 		return resposta;
 	}
 
-	// NÃO COPIEM ISSO!!!
-	/*public boolean temElemento(Cliente cliente) {
+
+	public boolean existe(String cpf) {
 		if (this.cliente != null) {
-			if (this.cliente.equals(cliente)) {
+			if (this.cliente.getCpf().equals(cpf)) {
 				return true;
 			} else {
-				return this.proximo.temElemento(cliente);
+				return this.proximo.existe(cpf);
 			}
 		} else {
 			return false;
 		}
-	}*/
+	}
 
 }
