@@ -73,4 +73,14 @@ public class RepositorioArrayPacoteViagem implements RepositorioPacoteViagem{
 			throw e;
 		}
 	}
+	
+	public boolean existe(String id) {
+		boolean resposta = false;
+		for (int i = 0; i <= this.contador && !resposta; i++) {
+			if (this.arrayPacoteViagem[i].getId().equals(id)) {
+				resposta = true;
+			}
+		}
+		return resposta;
+	}
 }

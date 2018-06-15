@@ -14,18 +14,12 @@ public class RepositorioListaPacoteViagem implements RepositorioPacoteViagem {
 		this.proximo = null;
 	}
 
-	public void inserir(PacoteViagem pacoteViagem) throws PacoteViagemJaCadastradoException {
+	public void inserir(PacoteViagem pacoteViagem) {
 		if (this.pacoteViagem == null) {
 			this.pacoteViagem = pacoteViagem;
 			this.proximo = new RepositorioListaPacoteViagem();
 		} else {
-			if (this.pacoteViagem.equals(pacoteViagem)) {
-				PacoteViagemJaCadastradoException e;
-				e = new PacoteViagemJaCadastradoException();
-				throw e;
-			} else {
-				this.proximo.inserir(pacoteViagem);
-			}
+			this.proximo.inserir(pacoteViagem);
 		}
 	}
 
@@ -47,7 +41,7 @@ public class RepositorioListaPacoteViagem implements RepositorioPacoteViagem {
 		}
 	}
 
-	public void atualizar(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException, PacoteViagemJaCadastradoException {
+	public void atualizar(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException {
 		PacoteViagem pacoteViagemAnterior;
 		pacoteViagemAnterior = procurar(pacoteViagem.getId());
 		this.remover(pacoteViagemAnterior.getId());
@@ -69,5 +63,17 @@ public class RepositorioListaPacoteViagem implements RepositorioPacoteViagem {
 			throw e;
 		}
 		return resposta;
+	}
+	
+	public boolean existe(String id) {
+		if (this.pacoteViagem != null) {
+			if (this.pacoteViagem.getId().equals(id)) {
+				return true;
+			} else {
+				return this.proximo.existe(id);
+			}
+		} else {
+			return false;
+		}
 	}
 }
