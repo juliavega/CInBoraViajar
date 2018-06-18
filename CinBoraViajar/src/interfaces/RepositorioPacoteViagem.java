@@ -2,7 +2,6 @@ package interfaces;
 
 import classesBasicas.PacoteViagem;
 import erros.PacoteNaoEncontradoException;
-import erros.PacoteViagemJaCadastradoException;
 
 public interface RepositorioPacoteViagem {
 	public void inserir(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException;

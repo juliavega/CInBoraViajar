@@ -39,4 +39,8 @@ public class CadastroDestino {
 	public void procurar(String cidade) throws DestinoNaoEncontradoException {
 		this.destinos.procurar(cidade);
 	}
+	
+	public boolean existe(String cidade) {
+		return this.destinos.existe(cidade);
+	}
 }

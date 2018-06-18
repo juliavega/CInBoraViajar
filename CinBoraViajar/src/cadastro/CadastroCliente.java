@@ -40,4 +40,8 @@ public class CadastroCliente {
 	public Cliente procurar (String cpf) throws ClienteNaoEncontradoException {
 		return this.clientes.procurar(cpf);
 	}
+	
+	public boolean existe (String cpf) {
+		return this.clientes.existe(cpf);
+	}
 }

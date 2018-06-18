@@ -1,7 +1,6 @@
 package interfaces;
 
 import classesBasicas.Cliente;
-import erros.ClienteJaCadastradoException;
 import erros.ClienteNaoEncontradoException;
 import erros.LimiteAtingidoException;
 
