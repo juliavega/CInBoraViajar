@@ -36,8 +36,8 @@ public class CadastroDestino {
 		this.destinos.atualizar(destino);
 	}
 
-	public void procurar(String cidade) throws DestinoNaoEncontradoException {
-		this.destinos.procurar(cidade);
+	public Destino procurar(String cidade) throws DestinoNaoEncontradoException {
+		 return this.destinos.procurar(cidade);
 	}
 	
 	public boolean existe(String cidade) {

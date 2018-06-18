@@ -11,6 +11,8 @@ import erros.ClienteInvalidoException;
 import erros.ClienteJaCadastradoException;
 import erros.ClienteNaoEncontradoException;
 import erros.DestinoInvalidoException;
+import erros.DestinoJaCadastradoException;
+import erros.DestinoNaoEncontradoException;
 import erros.LimiteAtingidoException;
 import erros.PacoteJaCadastradoException;
 import erros.PacoteNaoEncontradoException;
@@ -65,6 +67,21 @@ public class CInBoraViajar {
 		return pacotesViagem.procurar(id);
 	}
 	
+	public void cadastrarDestino (Destino destino) throws DestinoNaoEncontradoException, DestinoJaCadastradoException {
+		destinos.cadastrar(destino);
+	}
+	
+	public void removerDestino (String cidade) throws DestinoNaoEncontradoException {
+		destinos.remover(cidade);
+	}
+	
+	public void atualizarDestino (Destino destino) throws DestinoNaoEncontradoException, DestinoJaCadastradoException {
+		destinos.atualizar(destino);
+	}
+	
+	public Destino procurarDestino (String cidade) throws DestinoNaoEncontradoException {
+		return destinos.procurar(cidade);
+	}
 	
 	
 }
