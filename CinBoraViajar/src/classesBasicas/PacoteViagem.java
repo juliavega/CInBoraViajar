@@ -5,7 +5,6 @@ import erros.ValorPacoteInvalidoException;
 public class PacoteViagem {
 	
 	//Atributos exclusivos da classe PacoteViagem
-	private String tipo;
 	private Cliente cliente;
 	private Destino destino;
 	private double valor;
@@ -13,9 +12,8 @@ public class PacoteViagem {
 	private String id;
 	
 	//Construtor da classe PacoteViagem
-	public PacoteViagem (String tipo, Cliente cliente, Destino destino, double valor, int duracao, String id) 
+	public PacoteViagem (Cliente cliente, Destino destino, double valor, int duracao, String id) 
 			throws ValorPacoteInvalidoException {
-		this.tipo = tipo;
 		this.cliente = cliente;
 		this.destino = destino;
 		
@@ -34,10 +32,6 @@ public class PacoteViagem {
 	}
 	public String getId() {
 		return this.id;
-	}
-	
-	public String getTipo() {
-		return this.tipo;
 	}
 	
 	public Cliente getCliente() {

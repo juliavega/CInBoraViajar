@@ -19,8 +19,14 @@ public class Cliente extends Pessoa {
 		super(nome, cpf, dataNascimento);
 
 		this.passaporte = null;
-
-		this.email = email;
+		
+		if (email.contains("@")) {
+			this.email = email;
+		} else {
+			EmailInvalidoException e;
+			e = new EmailInvalidoException();
+			throw e;
+		}
 
 		// Checa a quantidade de digitos do número do cartão
 		if (numeroCartao.length() == 16) {

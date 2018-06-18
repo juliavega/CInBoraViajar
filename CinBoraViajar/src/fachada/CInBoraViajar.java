@@ -81,20 +81,20 @@ public class CInBoraViajar {
 	}
 	
 	//Funcionário
-	public void cadastrar(Funcionario funcionario) throws LimiteAtingidoException, FuncionarioJaCadastradoException {
+	public void cadastrarFuncionario(Funcionario funcionario) throws LimiteAtingidoException, FuncionarioJaCadastradoException {
 		funcionarios.cadastrar(funcionario);
 	}
 
-	public void remover(String cpf) throws FuncionarioNaoEncontradoException {
+	public void removerFuncionario(String cpf) throws FuncionarioNaoEncontradoException {
 		funcionarios.remover(cpf);
 	}
 
-	public void atualizar(Funcionario funcionario)
+	public void atualizarFuncionario(Funcionario funcionario)
 			throws FuncionarioNaoEncontradoException, FuncionarioJaCadastradoException {
 		funcionarios.atualizar(funcionario);
 	}
 
-	public Funcionario procurar(String cpf) throws FuncionarioNaoEncontradoException {
+	public Funcionario procurarFuncionario(String cpf) throws FuncionarioNaoEncontradoException {
 		return funcionarios.procurar(cpf);
 	}
 	
