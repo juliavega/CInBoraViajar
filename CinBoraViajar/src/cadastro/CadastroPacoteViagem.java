@@ -39,4 +39,7 @@ public class CadastroPacoteViagem {
 	public PacoteViagem procurar(String id) throws PacoteNaoEncontradoException {
 		return this.pacotes.procurar(id);
 	}
+	public boolean existe (String id) {
+		return this.pacotes.existe(id);
+	}
 }

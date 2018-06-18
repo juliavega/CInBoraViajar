@@ -41,4 +41,7 @@ public class CadastroFuncionario {
 	public Funcionario procurar(String cpf) throws FuncionarioNaoEncontradoException {
 		return this.funcionarios.procurar(cpf);
 	}
+	public boolean existe(String cpf) {
+		return this.funcionarios.existe(cpf);
+	}
 }
