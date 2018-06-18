@@ -10,15 +10,13 @@ import erros.PassaporteInvalidoException;
 public class Cliente extends Pessoa {
 
 	// Atributos exclusivos da classe Cliente
-	private String passaporte, email, numeroCartao;
+	private String email, numeroCartao;
 
 	// Construtor classe Cliente
 	public Cliente(String nome, String cpf, String dataNascimento, String email, String numeroCartao)
 			throws NomeMuitoLongoException, CpfInvalidoException, NumeroCartaoInvalidoException, EmailInvalidoException,
 			DataNascimentoInvalidaException {
 		super(nome, cpf, dataNascimento);
-
-		this.passaporte = null;
 		
 		if (email.contains("@")) {
 			this.email = email;
@@ -41,24 +39,6 @@ public class Cliente extends Pessoa {
 	}
 
 	// Metodos
-	public void setPassaporte(String passaporte) throws PassaporteInvalidoException {
-
-		// Checa a quantidade de dígitos do passaporte se é valido
-		if (passaporte.length() == 8) {
-			this.passaporte = passaporte;
-
-			// Erro se for inválido (diferente de 8)
-		} else {
-			PassaporteInvalidoException e;
-			e = new PassaporteInvalidoException();
-			throw e;
-		}
-	}
-
-	public String getPassaporte() {
-		return this.passaporte;
-	}
-
 	public String getEmail() {
 		return this.email;
 	}

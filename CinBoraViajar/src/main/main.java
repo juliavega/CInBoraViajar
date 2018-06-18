@@ -35,7 +35,6 @@ public class main {
 			cinbora = new CInBoraViajar(true);
 			System.out.println("---- Sistema criado em lista ----");
 		}
-		escolha = 0;
 		System.out.println("O que você deseja fazer?");
 		System.out.println("0 - Cadastrar");
 		System.out.println("1 - Remover");
@@ -65,15 +64,24 @@ public class main {
 				numeroCartao = in.nextLine();
 				try {					
 					cliente = new Cliente(nome, cpf, dataNascimento, email, numeroCartao);
+					cinbora.cadastrarCliente(cliente); 
 				} catch (NomeMuitoLongoException e){
 					System.out.println(e.getMessage());
 				} catch (CpfInvalidoException e) {
 					System.out.println(e.getMessage());
 				} catch (DataNascimentoInvalidaException e) {
 					System.out.println(e.getMessage());
+				} catch (EmailInvalidoException e) {
+					System.out.println(e.getMessage());
+				} catch (NumeroCartaoInvalidoException e) {
+					System.out.println(e.getMessage());
+				} catch (ClienteJaCadastradoException e) {
+					System.out.println(e.getMessage());
+				} catch (LimiteAtingidoException e) {
+					System.out.println(e.getMessage());
 				}
+				
 				System.out.println("---- Cliente cadastrado com sucesso----");
-				escolha = 0;
 			} else if (escolha == 1){
 				System.out.println("Digite o país:");
 				pais = in.nextLine();
