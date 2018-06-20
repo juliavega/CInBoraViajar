@@ -33,7 +33,7 @@ public class RepositorioArrayFuncionario implements RepositorioFuncionario {
 	public Funcionario procurar(String cpf) throws FuncionarioNaoEncontradoException {
 		Funcionario resposta = null;
 		boolean jaAchou = false;
-		for (int i = 0; i <= this.contador && !jaAchou; i++) {
+		for (int i = 0; i < this.contador && !jaAchou; i++) {
 			if (this.arrayFuncionario[i].getCpf().equals(cpf)) {
 				resposta = this.arrayFuncionario[i];
 				jaAchou = true;
@@ -73,7 +73,7 @@ public class RepositorioArrayFuncionario implements RepositorioFuncionario {
 	
 	public boolean existe(String cpf) {
 		boolean resposta = false;
-		for (int i = 0; i <= this.contador && !resposta; i++) {
+		for (int i = 0; i < this.contador && !resposta; i++) {
 			if (this.arrayFuncionario[i].getCpf().equals(cpf)) {
 				resposta = true;
 			}

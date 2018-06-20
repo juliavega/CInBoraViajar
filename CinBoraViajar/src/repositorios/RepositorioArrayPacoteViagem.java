@@ -35,7 +35,7 @@ public class RepositorioArrayPacoteViagem implements RepositorioPacoteViagem{
 	public PacoteViagem procurar(String id) throws PacoteNaoEncontradoException {
 		PacoteViagem resposta = null;
 		boolean jaAchou = false;
-		for (int i = 0; i <= this.contador && !jaAchou; i++) {
+		for (int i = 0; i < this.contador && !jaAchou; i++) {
 			if (this.arrayPacoteViagem[i].getId().equals(id)) {
 				resposta = this.arrayPacoteViagem[i];
 				jaAchou = true;
@@ -59,7 +59,7 @@ public class RepositorioArrayPacoteViagem implements RepositorioPacoteViagem{
 	public int getIndice(String id) throws PacoteNaoEncontradoException {
 		int resposta = 0;
 		boolean jaAchou = false;
-		for (int i = 0; i <= this.contador && !jaAchou; i++) {
+		for (int i = 0; i < this.contador && !jaAchou; i++) {
 			if (this.arrayPacoteViagem[i].getId().equals(id)) {
 				resposta = i;
 				jaAchou = true;
@@ -76,7 +76,7 @@ public class RepositorioArrayPacoteViagem implements RepositorioPacoteViagem{
 	
 	public boolean existe(String id) {
 		boolean resposta = false;
-		for (int i = 0; i <= this.contador && !resposta; i++) {
+		for (int i = 0; i < this.contador && !resposta; i++) {
 			if (this.arrayPacoteViagem[i].getId().equals(id)) {
 				resposta = true;
 			}
