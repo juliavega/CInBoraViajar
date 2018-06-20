@@ -17,11 +17,10 @@ public class PacoteViagem {
 		this.cliente = cliente;
 		this.destino = destino;
 		
-		// *FALTA CRIAR ERRO ID JA EXISTE
 		this.id = id;
 		
 		// Verifica se o valor do pacote é menor que 0
-		if (valor >= 0) {			
+		if (valor > 0) {			
 			this.valor = valor;
 		} else {
 			ValorPacoteInvalidoException e;

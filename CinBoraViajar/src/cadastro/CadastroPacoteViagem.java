@@ -1,6 +1,7 @@
 package cadastro;
 
 import classesBasicas.PacoteViagem;
+import erros.LimiteAtingidoException;
 import erros.PacoteJaCadastradoException;
 import erros.PacoteNaoEncontradoException;
 import interfaces.RepositorioPacoteViagem;
@@ -18,7 +19,7 @@ public class CadastroPacoteViagem {
 			}
 		}
 
-	public void cadastrar(PacoteViagem pacote) throws PacoteJaCadastradoException, PacoteNaoEncontradoException {
+	public void cadastrar(PacoteViagem pacote) throws PacoteJaCadastradoException, LimiteAtingidoException {
 		if (!this.pacotes.existe(pacote.getId())) {
 			this.pacotes.inserir(pacote);
 		} else {

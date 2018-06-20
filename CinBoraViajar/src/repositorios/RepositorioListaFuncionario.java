@@ -14,18 +14,12 @@ public class RepositorioListaFuncionario implements RepositorioFuncionario {
 		this.proximo = null;
 	}
 
-	public void inserir(Funcionario funcionario) throws FuncionarioJaCadastradoException {
+	public void inserir(Funcionario funcionario) {
 		if (this.funcionario == null) {
 			this.funcionario = funcionario;
 			this.proximo = new RepositorioListaFuncionario();
 		} else {
-			if (this.funcionario.equals(funcionario)) {
-				FuncionarioJaCadastradoException e;
-				e = new FuncionarioJaCadastradoException();
-				throw e;
-			} else {
-				this.proximo.inserir(funcionario);
-			}
+			this.proximo.inserir(funcionario);
 		}
 	}
 

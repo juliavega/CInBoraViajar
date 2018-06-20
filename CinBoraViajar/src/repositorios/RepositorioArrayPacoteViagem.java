@@ -11,13 +11,13 @@ public class RepositorioArrayPacoteViagem implements RepositorioPacoteViagem{
 	private PacoteViagem[] arrayPacoteViagem = new PacoteViagem[1000];
 	private int contador = 0;
 	
-	public void inserir(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException {
+	public void inserir(PacoteViagem pacoteViagem) throws LimiteAtingidoException {
 		if (this.contador < this.arrayPacoteViagem.length) {
 			this.arrayPacoteViagem[contador] = pacoteViagem;
 			this.contador++;
 		} else {
-			PacoteNaoEncontradoException e;
-			e = new PacoteNaoEncontradoException();
+			LimiteAtingidoException e;
+			e = new LimiteAtingidoException();
 			throw e;
 		}
 	}
