@@ -96,6 +96,7 @@ public class main {
 				
 				try {					
 					destino = new Destino(pais, cidade, hospedagem);
+					cinbora.cadastrarDestino(destino);
 				} catch (DestinoJaCadastradoException e) {
 					System.out.println(e.getMessage());
 				} catch (LimiteAtingidoException e) {

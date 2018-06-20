@@ -3,19 +3,20 @@ package repositorios;
 import classesBasicas.Destino;
 import erros.DestinoJaCadastradoException;
 import erros.DestinoNaoEncontradoException;
+import erros.LimiteAtingidoException;
 import interfaces.RepositorioDestino;
 
 public class RepositorioArrayDestino implements RepositorioDestino{
 	private Destino[] arrayDestino = new Destino[1000];
 	private int contador = 0;
 
-	public void inserir(Destino destino) throws DestinoNaoEncontradoException {
+	public void inserir(Destino destino) throws LimiteAtingidoException {
 		if (this.contador < this.arrayDestino.length) {
 			this.arrayDestino[contador] = destino;
 			this.contador++;
 		} else {
-			DestinoNaoEncontradoException e;
-			e = new DestinoNaoEncontradoException();
+			LimiteAtingidoException e;
+			e = new LimiteAtingidoException();
 			throw e;
 		}		
 	}

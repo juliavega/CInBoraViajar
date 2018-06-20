@@ -3,6 +3,7 @@ package cadastro;
 import classesBasicas.Destino;
 import erros.DestinoJaCadastradoException;
 import erros.DestinoNaoEncontradoException;
+import erros.LimiteAtingidoException;
 import interfaces.RepositorioDestino;
 import repositorios.RepositorioArrayDestino;
 import repositorios.RepositorioListaDestino;
@@ -18,7 +19,7 @@ public class CadastroDestino {
 		}
 	}
 
-	public void cadastrar(Destino destino) throws DestinoNaoEncontradoException, DestinoJaCadastradoException {
+	public void cadastrar(Destino destino) throws DestinoJaCadastradoException, LimiteAtingidoException {
 		if (!this.destinos.existe(destino.getCidade())) {
 			this.destinos.inserir(destino);
 		} else {
