@@ -9,13 +9,13 @@ public class RepositorioArrayDestino implements RepositorioDestino{
 	private Destino[] arrayDestino = new Destino[1000];
 	private int contador = 0;
 
-	public void inserir(Destino destino) throws DestinoJaCadastradoException {
+	public void inserir(Destino destino) throws DestinoNaoEncontradoException {
 		if (this.contador < this.arrayDestino.length) {
 			this.arrayDestino[contador] = destino;
 			this.contador++;
 		} else {
-			DestinoJaCadastradoException e;
-			e = new DestinoJaCadastradoException();
+			DestinoNaoEncontradoException e;
+			e = new DestinoNaoEncontradoException();
 			throw e;
 		}		
 	}

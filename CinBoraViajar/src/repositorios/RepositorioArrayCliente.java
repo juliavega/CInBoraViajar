@@ -2,6 +2,7 @@
 package repositorios;
 
 import classesBasicas.Cliente;
+import erros.ClienteJaCadastradoException;
 import erros.ClienteNaoEncontradoException;
 import erros.LimiteAtingidoException;
 import interfaces.RepositorioCliente;
@@ -10,7 +11,7 @@ public class RepositorioArrayCliente implements RepositorioCliente {
 	private Cliente[] arrayCliente = new Cliente[1000];
 	private int contador = 0;
 
-	public void inserir(Cliente cliente) throws LimiteAtingidoException {
+	public void inserir(Cliente cliente) throws LimiteAtingidoException{
 		if (this.contador < this.arrayCliente.length) {
 			this.arrayCliente[contador] = cliente;
 			this.contador++;
