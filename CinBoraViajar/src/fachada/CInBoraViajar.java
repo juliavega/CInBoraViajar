@@ -51,7 +51,7 @@ public class CInBoraViajar {
 	}
 	
 	//Pacote
-	public void cadastrarPacote(PacoteViagem pacote) throws PacoteJaCadastradoException, PacoteNaoEncontradoException,
+	public void cadastrarPacote(PacoteViagem pacote) throws PacoteJaCadastradoException, LimiteAtingidoException,
 			DestinoInvalidoException, ClienteInvalidoException {
 		Destino d = pacote.getDestino();
 		Cliente c = pacote.getCliente();
