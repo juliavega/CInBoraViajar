@@ -75,7 +75,7 @@ public class RepositorioArrayCliente implements RepositorioCliente {
 	
 	public boolean existe(String cpf) {
 		boolean resposta = false;
-		for (int i = 0; i <= this.contador && !resposta; i++) {
+		for (int i = 0; i <= this.contador && contador != 0 && !resposta; i++) {
 			if (this.arrayCliente[i].getCpf().equals(cpf)) {
 				resposta = true;
 			}

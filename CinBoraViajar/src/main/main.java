@@ -50,6 +50,7 @@ public class main {
 			System.out.println("3 - Funcionário");
 			
 			escolha = in.nextInt();
+			in.nextLine();
 			
 			if (escolha == 0) {
 				System.out.println("Digite o nome:");
