@@ -99,7 +99,7 @@ public class CInBoraViajar {
 	}
 	
 	//Destino
-	public void cadastrarDestino(Destino destino) throws DestinoNaoEncontradoException, DestinoJaCadastradoException {
+	public void cadastrarDestino(Destino destino) throws DestinoJaCadastradoException, LimiteAtingidoException {
 		destinos.cadastrar(destino);
 	}
 

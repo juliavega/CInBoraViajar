@@ -8,6 +8,7 @@ import erros.ClienteJaCadastradoException;
 import erros.ClienteNaoEncontradoException;
 import erros.CpfInvalidoException;
 import erros.DataNascimentoInvalidaException;
+import erros.DestinoJaCadastradoException;
 import erros.EmailInvalidoException;
 import erros.LimiteAtingidoException;
 import erros.NomeMuitoLongoException;
@@ -25,6 +26,7 @@ public class main {
 		String nome, cpf, dataNascimento, email, numeroCartao, pais, cidade, hospedagem;
 		CInBoraViajar cinbora = null;
 		Cliente cliente;
+		Destino destino;
 		// Escolha do tipo do repositorio
 		escolha = in.nextInt();
 		
@@ -83,6 +85,7 @@ public class main {
 				}
 				
 				System.out.println("---- Cliente cadastrado com sucesso----");
+				
 			} else if (escolha == 1){
 				System.out.println("Digite o país:");
 				pais = in.nextLine();
@@ -91,7 +94,14 @@ public class main {
 				System.out.println("Digite o tipo da hospedagem:");
 				hospedagem = in.nextLine();
 				
-				Destino destino = new Destino(pais, cidade, hospedagem);
+				try {					
+					destino = new Destino(pais, cidade, hospedagem);
+				} catch (DestinoJaCadastradoException e) {
+					System.out.println(e.getMessage());
+				} catch (LimiteAtingidoException e) {
+					System.out.println(e.getMessage());
+				}
+				
 				System.out.println("---- Destino cadastrado com sucesso----");
 				
 				//Deixar melhor experiencia de usuário
