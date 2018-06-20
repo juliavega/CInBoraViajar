@@ -23,10 +23,10 @@ public class RepositorioArrayCliente implements RepositorioCliente {
 	
 	public void remover(String cpf) throws ClienteNaoEncontradoException {
 		int indice = this.getIndice(cpf);
-		int indiceaux = indice;
+		int indiceAux = indice;
 		for (int i = 1; i < (arrayCliente.length - indice); i++) {
-			arrayCliente[indiceaux] = arrayCliente [indiceaux + 1];
-			indiceaux++;
+			arrayCliente[indiceAux] = arrayCliente [indiceAux + 1];
+			indiceAux++;
 		}
 		arrayCliente[arrayCliente.length - 1] = null;
 	}

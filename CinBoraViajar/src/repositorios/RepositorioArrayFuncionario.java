@@ -22,10 +22,10 @@ public class RepositorioArrayFuncionario implements RepositorioFuncionario {
 
 	public void remover(String cpf) throws FuncionarioNaoEncontradoException {
 		int indice = this.getIndice(cpf);
-		int indiceaux = indice;
+		int indiceAux = indice;
 		for (int i = 1; i < (arrayFuncionario.length - indice); i++) {
-			arrayFuncionario[indiceaux] = arrayFuncionario [indiceaux + 1];
-			indiceaux++;
+			arrayFuncionario[indiceAux] = arrayFuncionario [indiceAux + 1];
+			indiceAux++;
 		}
 		arrayFuncionario[arrayFuncionario.length - 1] = null;
 	}

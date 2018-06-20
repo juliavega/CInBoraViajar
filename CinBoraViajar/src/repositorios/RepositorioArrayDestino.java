@@ -20,10 +20,10 @@ public class RepositorioArrayDestino implements RepositorioDestino{
 	}
 	public void remover(String cidade) throws DestinoNaoEncontradoException {
 		int indice = this.getIndice(cidade);
-		int indiceaux = indice;
+		int indiceAux = indice;
 		for (int i = 1; i < (arrayDestino.length - indice); i++) {
-			arrayDestino[indiceaux] = arrayDestino [indiceaux + 1];
-			indiceaux++;
+			arrayDestino[indiceAux] = arrayDestino [indiceAux + 1];
+			indiceAux++;
 		}
 		arrayDestino[arrayDestino.length - 1] = null;
 	}

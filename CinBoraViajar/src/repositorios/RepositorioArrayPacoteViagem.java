@@ -24,10 +24,10 @@ public class RepositorioArrayPacoteViagem implements RepositorioPacoteViagem{
 
 	public void remover(String id) throws PacoteNaoEncontradoException {
 		int indice = this.getIndice(id);
-		int indiceaux = indice;
+		int indiceAux = indice;
 		for (int i = 1; i < (arrayPacoteViagem.length - indice); i++) {
-			arrayPacoteViagem[indiceaux] = arrayPacoteViagem [indiceaux + 1];
-			indiceaux++;
+			arrayPacoteViagem[indiceAux] = arrayPacoteViagem [indiceAux + 1];
+			indiceAux++;
 		}
 		arrayPacoteViagem[arrayPacoteViagem.length - 1] = null;
 	}
