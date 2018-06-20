@@ -31,7 +31,7 @@ public class RepositorioArrayDestino implements RepositorioDestino{
 	public Destino procurar(String cidade) throws DestinoNaoEncontradoException {
 		Destino resposta = null;
 		boolean jaAchou = false;
-		for (int i = 0; i <= this.contador && !jaAchou; i++) {
+		for (int i = 0; i < this.contador && !jaAchou; i++) {
 			if (this.arrayDestino[i].getCidade().equals(cidade)) {
 				resposta = this.arrayDestino[i];
 				jaAchou = true;
@@ -54,7 +54,7 @@ public class RepositorioArrayDestino implements RepositorioDestino{
 	public int getIndice(String cidade) throws DestinoNaoEncontradoException {
 		int resposta = 0;
 		boolean jaAchou = false;
-		for (int i = 0; i <= this.contador && !jaAchou; i++) {
+		for (int i = 0; i < this.contador && !jaAchou; i++) {
 			if (this.arrayDestino[i].getCidade().equals(cidade)) {
 				resposta = i;
 				jaAchou = true;

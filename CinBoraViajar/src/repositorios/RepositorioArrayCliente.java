@@ -34,7 +34,7 @@ public class RepositorioArrayCliente implements RepositorioCliente {
 	public Cliente procurar(String cpf) throws ClienteNaoEncontradoException {
 		Cliente resposta = null;
 		boolean jaAchou = false;
-		for (int i = 0; i <= this.contador && !jaAchou; i++) {
+		for (int i = 0; i < this.contador && !jaAchou; i++) {
 			if (this.arrayCliente[i].getCpf().equals(cpf)) {
 				resposta = this.arrayCliente[i];
 				jaAchou = true;
@@ -58,7 +58,7 @@ public class RepositorioArrayCliente implements RepositorioCliente {
 	public int getIndice(String cpf) throws ClienteNaoEncontradoException {
 		int resposta = 0;
 		boolean jaAchou = false;
-		for (int i = 0; i <= this.contador && !jaAchou; i++) {
+		for (int i = 0; i < this.contador && !jaAchou; i++) {
 			if (this.arrayCliente[i].getCpf().equals(cpf)) {
 				resposta = i;
 				jaAchou = true;
@@ -75,7 +75,7 @@ public class RepositorioArrayCliente implements RepositorioCliente {
 	
 	public boolean existe(String cpf) {
 		boolean resposta = false;
-		for (int i = 0; i <= this.contador && contador != 0 && !resposta; i++) {
+		for (int i = 0; i < this.contador && !resposta; i++) {
 			if (this.arrayCliente[i].getCpf().equals(cpf)) {
 				resposta = true;
 			}
