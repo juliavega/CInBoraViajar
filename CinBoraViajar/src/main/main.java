@@ -27,12 +27,13 @@ import erros.ValorPacoteInvalidoException;
 import fachada.CInBoraViajar;
 
 public class main {
-	public static void main (String [] args) {
+	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
-		
+
 		System.out.println("Olá, bem vindo a empresa CInBora viajar!");
-		System.out.println("Você deseja utilizar nosso sistema em array ou lista? (Digite 0 para array e 1 para lista)");
-		
+		System.out
+				.println("Você deseja utilizar nosso sistema em array ou lista? (Digite 0 para array e 1 para lista)");
+
 		int escolha, valor, duracao;
 		double salario;
 		String nome = null, cpf, dataNascimento, email, numeroCartao, pais, cidade, hospedagem, id, cargo;
@@ -41,26 +42,26 @@ public class main {
 		Destino destino = null;
 		PacoteViagem pacote;
 		Funcionario funcionario;
-		
+
 		// Escolha do tipo do repositorio
 		escolha = in.nextInt();
-		
+
 		if (escolha == 0) {
 			cinbora = new CInBoraViajar(false);
 			System.out.println("---- Sistema criado em array ----");
-		} else if (escolha == 1){
+		} else if (escolha == 1) {
 			cinbora = new CInBoraViajar(true);
 			System.out.println("---- Sistema criado em lista ----");
 		}
-		
+
 		while (escolha >= 0) {
-			
+
 			System.out.println("O que você deseja fazer?");
 			System.out.println("0 - Cadastrar");
 			System.out.println("1 - Remover");
 			System.out.println("2 - Atualizar");
 			System.out.println("3 - Procurar");
-			
+
 			escolha = in.nextInt();
 			if (escolha == 0) {
 				System.out.println("O que voce deseja cadastrar?");
@@ -68,10 +69,10 @@ public class main {
 				System.out.println("1 - Destino");
 				System.out.println("2 - Pacote de viagem");
 				System.out.println("3 - Funcionário");
-				
+
 				escolha = in.nextInt();
 				in.nextLine();
-				
+
 				if (escolha == 0) {
 					System.out.println("Digite o nome:");
 					nome = in.nextLine();
@@ -83,10 +84,10 @@ public class main {
 					email = in.nextLine();
 					System.out.println("Digite o numero do cartão com 16 dígitos:");
 					numeroCartao = in.nextLine();
-					try {					
+					try {
 						cliente = new Cliente(nome, cpf, dataNascimento, email, numeroCartao);
-						cinbora.cadastrarCliente(cliente); 
-					} catch (NomeMuitoLongoException e){
+						cinbora.cadastrarCliente(cliente);
+					} catch (NomeMuitoLongoException e) {
 						System.out.println(e.getMessage());
 					} catch (CpfInvalidoException e) {
 						System.out.println(e.getMessage());
@@ -101,18 +102,18 @@ public class main {
 					} catch (LimiteAtingidoException e) {
 						System.out.println(e.getMessage());
 					}
-					
+
 					System.out.println("---- Cliente cadastrado com sucesso ----");
-					
-				} else if (escolha == 1){
+
+				} else if (escolha == 1) {
 					System.out.println("Digite o país:");
 					pais = in.nextLine();
 					System.out.println("Digite a cidade:");
 					cidade = in.nextLine();
 					System.out.println("Digite o tipo da hospedagem:");
 					hospedagem = in.nextLine();
-					
-					try {					
+
+					try {
 						destino = new Destino(pais, cidade, hospedagem);
 						cinbora.cadastrarDestino(destino);
 					} catch (DestinoJaCadastradoException e) {
@@ -120,23 +121,23 @@ public class main {
 					} catch (LimiteAtingidoException e) {
 						System.out.println(e.getMessage());
 					}
-					
+
 					System.out.println("---- Destino cadastrado com sucesso ----");
-					
-					//Deixar melhor experiencia de usuário
+
+					// Deixar melhor experiencia de usuário
 				} else if (escolha == 2) {
 					System.out.println("Digite o cpf do cliente para quem o pacote será feito:");
 					cpf = in.nextLine();
 					try {
 						cliente = cinbora.procurarCliente(cpf);
-					} catch (ClienteNaoEncontradoException e){
+					} catch (ClienteNaoEncontradoException e) {
 						System.out.println(e.getMessage());
-					} 
+					}
 					System.out.println("Digite a cidade do pacote:");
 					cidade = in.nextLine();
 					try {
 						destino = cinbora.procurarDestino(cidade);
-					}catch (DestinoNaoEncontradoException e) {
+					} catch (DestinoNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
 					System.out.println("Digite o valor do pacote:");
@@ -161,9 +162,9 @@ public class main {
 					} catch (DestinoInvalidoException e) {
 						System.out.println(e.getMessage());
 					}
-					
+
 					System.out.println("---- Pacote cadastrado com sucesso ----");
-					
+
 				} else if (escolha == 3) {
 					System.out.println("Digite o nome do funcionário:");
 					nome = in.nextLine();
@@ -179,7 +180,7 @@ public class main {
 					try {
 						funcionario = new Funcionario(nome, cpf, dataNascimento, cargo, salario);
 						cinbora.cadastrarFuncionario(funcionario);
-					} catch (NomeMuitoLongoException e){
+					} catch (NomeMuitoLongoException e) {
 						System.out.println(e.getMessage());
 					} catch (FuncionarioJaCadastradoException e) {
 						System.out.println(e.getMessage());
@@ -192,7 +193,7 @@ public class main {
 					} catch (DataNascimentoInvalidaException e) {
 						System.out.println(e.getMessage());
 					}
-					
+
 					System.out.println("---- Funcionário cadastrado com sucesso ----");
 				}
 			} else if (escolha == 1) {
@@ -201,10 +202,10 @@ public class main {
 				System.out.println("1 - Destino");
 				System.out.println("2 - Pacote de viagem");
 				System.out.println("3 - Funcionário");
-				
+
 				escolha = in.nextInt();
 				in.nextLine();
-				
+
 				if (escolha == 0) {
 					System.out.println("Digite o cpf do cliente que vai ser removido:");
 					cpf = in.nextLine();
@@ -224,7 +225,7 @@ public class main {
 					} catch (DestinoNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
-					
+
 					System.out.println("---- Destino " + cidade + " removido com sucesso ----");
 				}
 				if (escolha == 2) {
@@ -235,8 +236,8 @@ public class main {
 					} catch (PacoteNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
-					
-					System.out.println("---- Pacote "+ id + " removido com sucesso ----");
+
+					System.out.println("---- Pacote " + id + " removido com sucesso ----");
 				}
 				if (escolha == 3) {
 					System.out.println("Digite o cpf do funcionário que vai ser removido:");
@@ -247,29 +248,29 @@ public class main {
 					} catch (FuncionarioNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
- 					
+
 					System.out.println("---- Funcionario" + nome + "removido com sucesso ----");
- 				}
-			
+				}
+
 			} else if (escolha == 2) {
 				System.out.println("O que voce deseja atualizar?");
 				System.out.println("0 - Cliente");
 				System.out.println("1 - Destino");
 				System.out.println("2 - Pacote de viagem");
 				System.out.println("3 - Funcionário");
-				
+
 				escolha = in.nextInt();
 				in.nextLine();
-			} else if (escolha == 3){
+			} else if (escolha == 3) {
 				System.out.println("O que voce deseja procurar?");
 				System.out.println("0 - Cliente");
 				System.out.println("1 - Destino");
 				System.out.println("2 - Pacote de viagem");
 				System.out.println("3 - Funcionário");
-				
+
 				escolha = in.nextInt();
 				in.nextLine();
 			}
-		}	
-	}	
+		}
+	}
 }
