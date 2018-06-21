@@ -44,141 +44,146 @@ public class main {
 			cinbora = new CInBoraViajar(true);
 			System.out.println("---- Sistema criado em lista ----");
 		}
-		System.out.println("O que você deseja fazer?");
-		System.out.println("0 - Cadastrar");
-		System.out.println("1 - Remover");
-		System.out.println("2 - Atualizar");
-		System.out.println("3 - Procurar");
 		
-		escolha = in.nextInt();
-		if (escolha == 0) {
-			System.out.println("O que voce deseja cadastrar?");
-			System.out.println("0 - Cliente");
-			System.out.println("1 - Destino");
-			System.out.println("2 - Pacote de viagem");
-			System.out.println("3 - Funcionário");
+		while (escolha >= 0) {
+			
+			System.out.println("O que você deseja fazer?");
+			System.out.println("0 - Cadastrar");
+			System.out.println("1 - Remover");
+			System.out.println("2 - Atualizar");
+			System.out.println("3 - Procurar");
 			
 			escolha = in.nextInt();
-			in.nextLine();
-			
 			if (escolha == 0) {
-				System.out.println("Digite o nome:");
-				nome = in.nextLine();
-				System.out.println("Digite o cpf:");
-				cpf = in.nextLine();
-				System.out.println("Digite a data de nascimento (no formato xx/xx/xxxx):");
-				dataNascimento = in.nextLine();
-				System.out.println("Digite o email:");
-				email = in.nextLine();
-				System.out.println("Digite o numero do cartão com 16 dígitos:");
-				numeroCartao = in.nextLine();
-				try {					
-					cliente = new Cliente(nome, cpf, dataNascimento, email, numeroCartao);
-					cinbora.cadastrarCliente(cliente); 
-				} catch (NomeMuitoLongoException e){
-					System.out.println(e.getMessage());
-				} catch (CpfInvalidoException e) {
-					System.out.println(e.getMessage());
-				} catch (DataNascimentoInvalidaException e) {
-					System.out.println(e.getMessage());
-				} catch (EmailInvalidoException e) {
-					System.out.println(e.getMessage());
-				} catch (NumeroCartaoInvalidoException e) {
-					System.out.println(e.getMessage());
-				} catch (ClienteJaCadastradoException e) {
-					System.out.println(e.getMessage());
-				} catch (LimiteAtingidoException e) {
-					System.out.println(e.getMessage());
+				System.out.println("O que voce deseja cadastrar?");
+				System.out.println("0 - Cliente");
+				System.out.println("1 - Destino");
+				System.out.println("2 - Pacote de viagem");
+				System.out.println("3 - Funcionário");
+				
+				escolha = in.nextInt();
+				in.nextLine();
+				
+				if (escolha == 0) {
+					System.out.println("Digite o nome:");
+					nome = in.nextLine();
+					System.out.println("Digite o cpf:");
+					cpf = in.nextLine();
+					System.out.println("Digite a data de nascimento (no formato xx/xx/xxxx):");
+					dataNascimento = in.nextLine();
+					System.out.println("Digite o email:");
+					email = in.nextLine();
+					System.out.println("Digite o numero do cartão com 16 dígitos:");
+					numeroCartao = in.nextLine();
+					try {					
+						cliente = new Cliente(nome, cpf, dataNascimento, email, numeroCartao);
+						cinbora.cadastrarCliente(cliente); 
+					} catch (NomeMuitoLongoException e){
+						System.out.println(e.getMessage());
+					} catch (CpfInvalidoException e) {
+						System.out.println(e.getMessage());
+					} catch (DataNascimentoInvalidaException e) {
+						System.out.println(e.getMessage());
+					} catch (EmailInvalidoException e) {
+						System.out.println(e.getMessage());
+					} catch (NumeroCartaoInvalidoException e) {
+						System.out.println(e.getMessage());
+					} catch (ClienteJaCadastradoException e) {
+						System.out.println(e.getMessage());
+					} catch (LimiteAtingidoException e) {
+						System.out.println(e.getMessage());
+					}
+					
+					System.out.println("---- Cliente cadastrado com sucesso ----");
+					
+				} else if (escolha == 1){
+					System.out.println("Digite o país:");
+					pais = in.nextLine();
+					System.out.println("Digite a cidade:");
+					cidade = in.nextLine();
+					System.out.println("Digite o tipo da hospedagem:");
+					hospedagem = in.nextLine();
+					
+					try {					
+						destino = new Destino(pais, cidade, hospedagem);
+						cinbora.cadastrarDestino(destino);
+					} catch (DestinoJaCadastradoException e) {
+						System.out.println(e.getMessage());
+					} catch (LimiteAtingidoException e) {
+						System.out.println(e.getMessage());
+					}
+					
+					System.out.println("---- Destino cadastrado com sucesso ----");
+					
+					//Deixar melhor experiencia de usuário
+				} else if (escolha == 2) {
+					System.out.println("Digite o cpf do cliente para quem o pacote será feito:");
+					cpf = in.nextLine();
+					try {
+						cliente = cinbora.procurarCliente(cpf);
+					} catch (ClienteNaoEncontradoException e){
+						System.out.println(e.getMessage());
+					} 
+					System.out.println("Digite a cidade que do pacote:");
+					cidade = in.nextLine();
+					try {
+						destino = cinbora.procurarDestino(cidade);
+					}catch (DestinoNaoEncontradoException e) {
+						System.out.println(e.getMessage());
+					}
+					System.out.println("Digite o valor do pacote:");
+					valor = in.nextInt();
+					in.nextLine();
+					System.out.println("Digite o número de meses do pacote:");
+					duracao = in.nextInt();
+					in.nextLine();
+					System.out.println("Digite o identificador do pacote:");
+					id = in.nextLine();
+					try {
+						pacote = new PacoteViagem(cliente, destino, valor, duracao, id);
+						cinbora.cadastrarPacote(pacote);
+					} catch (ValorPacoteInvalidoException e) {
+						System.out.println(e.getMessage());
+					} catch (PacoteJaCadastradoException e) {
+						System.out.println(e.getMessage());
+					} catch (LimiteAtingidoException e) {
+						System.out.println(e.getMessage());
+					} catch (ClienteInvalidoException e) {
+						System.out.println(e.getMessage());
+					} catch (DestinoInvalidoException e) {
+						System.out.println(e.getMessage());
+					}
+					
+					System.out.println("---- Pacote cadastrado com sucesso ----");
+					
+				} else if (escolha == 3) {
+					
 				}
+			} else if (escolha == 1) {
+				System.out.println("O que voce deseja remover?");
+				System.out.println("0 - Cliente");
+				System.out.println("1 - Destino");
+				System.out.println("2 - Pacote de viagem");
+				System.out.println("3 - Funcionário");
 				
-				System.out.println("---- Cliente cadastrado com sucesso----");
-				
-			} else if (escolha == 1){
-				System.out.println("Digite o país:");
-				pais = in.nextLine();
-				System.out.println("Digite a cidade:");
-				cidade = in.nextLine();
-				System.out.println("Digite o tipo da hospedagem:");
-				hospedagem = in.nextLine();
-				
-				try {					
-					destino = new Destino(pais, cidade, hospedagem);
-					cinbora.cadastrarDestino(destino);
-				} catch (DestinoJaCadastradoException e) {
-					System.out.println(e.getMessage());
-				} catch (LimiteAtingidoException e) {
-					System.out.println(e.getMessage());
-				}
-				
-				System.out.println("---- Destino cadastrado com sucesso----");
-				
-				//Deixar melhor experiencia de usuário
+				escolha = in.nextInt();
 			} else if (escolha == 2) {
-				System.out.println("Digite o cpf do cliente para quem o pacote será feito:");
-				cpf = in.nextLine();
-				try {
-					cliente = cinbora.procurarCliente(cpf);
-				} catch (ClienteNaoEncontradoException e){
-					System.out.println(e.getMessage());
-				} 
-				System.out.println("Digite a cidade que do pacote:");
-				cidade = in.nextLine();
-				try {
-					destino = cinbora.procurarDestino(cidade);
-				}catch (DestinoNaoEncontradoException e) {
-					System.out.println(e.getMessage());
-				}
-				System.out.println("Digite o valor do pacote:");
-				valor = in.nextInt();
-				in.nextLine();
-				System.out.println("Digite o número de meses do pacote:");
-				duracao = in.nextInt();
-				in.nextLine();
-				System.out.println("Digite o identificador do pacote:");
-				id = in.nextLine();
-				try {
-					pacote = new PacoteViagem(cliente, destino, valor, duracao, id);
-					cinbora.cadastrarPacote(pacote);
-				} catch (ValorPacoteInvalidoException e) {
-					System.out.println(e.getMessage());
-				} catch (PacoteJaCadastradoException e) {
-					System.out.println(e.getMessage());
-				} catch (LimiteAtingidoException e) {
-					System.out.println(e.getMessage());
-				} catch (ClienteInvalidoException e) {
-					System.out.println(e.getMessage());
-				} catch (DestinoInvalidoException e) {
-					System.out.println(e.getMessage());
-				}
+				System.out.println("O que voce deseja atualizar?");
+				System.out.println("0 - Cliente");
+				System.out.println("1 - Destino");
+				System.out.println("2 - Pacote de viagem");
+				System.out.println("3 - Funcionário");
 				
-			} else if (escolha == 3) {
+				escolha = in.nextInt();
+			} else if (escolha == 3){
+				System.out.println("O que voce deseja procurar?");
+				System.out.println("0 - Cliente");
+				System.out.println("1 - Destino");
+				System.out.println("2 - Pacote de viagem");
+				System.out.println("3 - Funcionário");
 				
+				escolha = in.nextInt();
 			}
-		} else if (escolha == 1) {
-			System.out.println("O que voce deseja remover?");
-			System.out.println("0 - Cliente");
-			System.out.println("1 - Destino");
-			System.out.println("2 - Pacote de viagem");
-			System.out.println("3 - Funcionário");
-			
-			escolha = in.nextInt();
-		} else if (escolha == 2) {
-			System.out.println("O que voce deseja atualizar?");
-			System.out.println("0 - Cliente");
-			System.out.println("1 - Destino");
-			System.out.println("2 - Pacote de viagem");
-			System.out.println("3 - Funcionário");
-			
-			escolha = in.nextInt();
-		} else if (escolha == 3){
-			System.out.println("O que voce deseja procurar?");
-			System.out.println("0 - Cliente");
-			System.out.println("1 - Destino");
-			System.out.println("2 - Pacote de viagem");
-			System.out.println("3 - Funcionário");
-			
-			escolha = in.nextInt();
-		}
-		
-	}
+		}	
+	}	
 }
