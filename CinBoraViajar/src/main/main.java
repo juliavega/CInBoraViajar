@@ -39,6 +39,7 @@ public class main {
 		Destino destino = null;
 		PacoteViagem pacote;
 		Funcionario funcionario;
+		
 		// Escolha do tipo do repositorio
 		escolha = in.nextInt();
 		
