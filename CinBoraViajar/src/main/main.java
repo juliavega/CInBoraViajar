@@ -87,6 +87,7 @@ public class main {
 					try {
 						cliente = new Cliente(nome, cpf, dataNascimento, email, numeroCartao);
 						cinbora.cadastrarCliente(cliente);
+						System.out.println("---- Cliente cadastrado com sucesso ----");
 					} catch (NomeMuitoLongoException e) {
 						System.out.println(e.getMessage());
 					} catch (CpfInvalidoException e) {
@@ -103,7 +104,6 @@ public class main {
 						System.out.println(e.getMessage());
 					}
 
-					System.out.println("---- Cliente cadastrado com sucesso ----");
 
 				} else if (escolha == 1) {
 					System.out.println("Digite o país:");
@@ -116,13 +116,13 @@ public class main {
 					try {
 						destino = new Destino(pais, cidade, hospedagem);
 						cinbora.cadastrarDestino(destino);
+						System.out.println("---- Destino cadastrado com sucesso ----");
 					} catch (DestinoJaCadastradoException e) {
 						System.out.println(e.getMessage());
 					} catch (LimiteAtingidoException e) {
 						System.out.println(e.getMessage());
 					}
 
-					System.out.println("---- Destino cadastrado com sucesso ----");
 
 					// Deixar melhor experiencia de usuário
 				} else if (escolha == 2) {
@@ -151,6 +151,7 @@ public class main {
 					try {
 						pacote = new PacoteViagem(cliente, destino, valor, duracao, id);
 						cinbora.cadastrarPacote(pacote);
+						System.out.println("---- Pacote cadastrado com sucesso ----");
 					} catch (ValorPacoteInvalidoException e) {
 						System.out.println(e.getMessage());
 					} catch (PacoteJaCadastradoException e) {
@@ -163,7 +164,6 @@ public class main {
 						System.out.println(e.getMessage());
 					}
 
-					System.out.println("---- Pacote cadastrado com sucesso ----");
 
 				} else if (escolha == 3) {
 					System.out.println("Digite o nome do funcionário:");
@@ -180,6 +180,7 @@ public class main {
 					try {
 						funcionario = new Funcionario(nome, cpf, dataNascimento, cargo, salario);
 						cinbora.cadastrarFuncionario(funcionario);
+						System.out.println("---- Funcionário cadastrado com sucesso ----");
 					} catch (NomeMuitoLongoException e) {
 						System.out.println(e.getMessage());
 					} catch (FuncionarioJaCadastradoException e) {
@@ -194,7 +195,6 @@ public class main {
 						System.out.println(e.getMessage());
 					}
 
-					System.out.println("---- Funcionário cadastrado com sucesso ----");
 				}
 			} else if (escolha == 1) {
 				System.out.println("O que voce deseja remover?");
@@ -212,32 +212,32 @@ public class main {
 					try {
 						nome = cinbora.procurarCliente(cpf).getNome();
 						cinbora.removerCliente(cpf);
+						System.out.println("---- Cliente " + nome + " removido com sucesso ----");
 					} catch (ClienteNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
-					System.out.println("---- Cliente " + nome + " removido com sucesso ----");
 				}
 				if (escolha == 1) {
 					System.out.println("Digite a cidade que vai ser removida:");
 					cidade = in.nextLine();
 					try {
 						cinbora.removerDestino(cidade);
+						System.out.println("---- Destino " + cidade + " removido com sucesso ----");
 					} catch (DestinoNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
 
-					System.out.println("---- Destino " + cidade + " removido com sucesso ----");
 				}
 				if (escolha == 2) {
 					System.out.println("Digite o identificador do pacote que vai ser removido:");
 					id = in.nextLine();
 					try {
 						cinbora.removerPacote(id);
+						System.out.println("---- Pacote " + id + " removido com sucesso ----");
 					} catch (PacoteNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
 
-					System.out.println("---- Pacote " + id + " removido com sucesso ----");
 				}
 				if (escolha == 3) {
 					System.out.println("Digite o cpf do funcionário que vai ser removido:");
@@ -245,11 +245,11 @@ public class main {
 					try {
 						nome = cinbora.procurarFuncionario(cpf).getNome();
 						cinbora.removerFuncionario(cpf);
+						System.out.println("---- Funcionario " + nome + " removido com sucesso ----");
 					} catch (FuncionarioNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
 
-					System.out.println("---- Funcionario " + nome + " removido com sucesso ----");
 				}
 
 			} else if (escolha == 2) {
