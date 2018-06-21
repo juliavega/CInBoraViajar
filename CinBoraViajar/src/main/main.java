@@ -210,6 +210,8 @@ public class main {
 					} catch (ClienteNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
+					
+					System.out.println("---- Cliente removido com sucesso ----");
 				}
 			} else if (escolha == 2) {
 				System.out.println("O que voce deseja atualizar?");
