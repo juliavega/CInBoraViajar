@@ -4,15 +4,21 @@ import java.util.Scanner;
 
 import classesBasicas.Cliente;
 import classesBasicas.Destino;
+import classesBasicas.PacoteViagem;
+import erros.ClienteInvalidoException;
 import erros.ClienteJaCadastradoException;
 import erros.ClienteNaoEncontradoException;
 import erros.CpfInvalidoException;
 import erros.DataNascimentoInvalidaException;
+import erros.DestinoInvalidoException;
 import erros.DestinoJaCadastradoException;
+import erros.DestinoNaoEncontradoException;
 import erros.EmailInvalidoException;
 import erros.LimiteAtingidoException;
 import erros.NomeMuitoLongoException;
 import erros.NumeroCartaoInvalidoException;
+import erros.PacoteJaCadastradoException;
+import erros.ValorPacoteInvalidoException;
 import fachada.CInBoraViajar;
 
 public class main {
@@ -22,11 +28,12 @@ public class main {
 		System.out.println("Olá, bem vindo a empresa CInBora viajar!");
 		System.out.println("Você deseja utilizar nosso sistema em array ou lista? (Digite 0 para array e 1 para lista)");
 		
-		int escolha;
-		String nome, cpf, dataNascimento, email, numeroCartao, pais, cidade, hospedagem;
+		int escolha, valor, duracao;
+		String nome, cpf, dataNascimento, email, numeroCartao, pais, cidade, hospedagem, id;
 		CInBoraViajar cinbora = null;
-		Cliente cliente;
-		Destino destino;
+		Cliente cliente = null;
+		Destino destino = null;
+		PacoteViagem pacote;
 		// Escolha do tipo do repositorio
 		escolha = in.nextInt();
 		
@@ -107,15 +114,42 @@ public class main {
 				
 				//Deixar melhor experiencia de usuário
 			} else if (escolha == 2) {
-				System.out.println("Digite o cpf do cliente:");
+				System.out.println("Digite o cpf do cliente para quem o pacote será feito:");
 				cpf = in.nextLine();
 				try {
 					cliente = cinbora.procurarCliente(cpf);
 				} catch (ClienteNaoEncontradoException e){
 					System.out.println(e.getMessage());
 				} 
-				System.out.println("Digite");
-				System.out.println("");
+				System.out.println("Digite a cidade que do pacote:");
+				cidade = in.nextLine();
+				try {
+					destino = cinbora.procurarDestino(cidade);
+				}catch (DestinoNaoEncontradoException e) {
+					System.out.println(e.getMessage());
+				}
+				System.out.println("Digite o valor do pacote:");
+				valor = in.nextInt();
+				in.nextLine();
+				System.out.println("Digite o número de meses do pacote:");
+				duracao = in.nextInt();
+				in.nextLine();
+				System.out.println("Digite o identificador do pacote:");
+				id = in.nextLine();
+				try {
+					pacote = new PacoteViagem(cliente, destino, valor, duracao, id);
+					cinbora.cadastrarPacote(pacote);
+				} catch (ValorPacoteInvalidoException e) {
+					System.out.println(e.getMessage());
+				} catch (PacoteJaCadastradoException e) {
+					System.out.println(e.getMessage());
+				} catch (LimiteAtingidoException e) {
+					System.out.println(e.getMessage());
+				} catch (ClienteInvalidoException e) {
+					System.out.println(e.getMessage());
+				} catch (DestinoInvalidoException e) {
+					System.out.println(e.getMessage());
+				}
 				
 			} else if (escolha == 3) {
 				
