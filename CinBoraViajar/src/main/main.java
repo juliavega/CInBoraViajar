@@ -20,7 +20,6 @@ import erros.LimiteAtingidoException;
 import erros.NomeMuitoLongoException;
 import erros.NumeroCartaoInvalidoException;
 import erros.PacoteJaCadastradoException;
-import erros.PacoteNaoEncontradoException;
 import erros.SalarioMuitoBaixoException;
 import erros.ValorPacoteInvalidoException;
 import fachada.CInBoraViajar;
@@ -34,7 +33,7 @@ public class main {
 		
 		int escolha, valor, duracao;
 		double salario;
-		String nome, cpf, dataNascimento, email, numeroCartao, pais, cidade, hospedagem, id, cargo;
+		String nome = null, cpf, dataNascimento, email, numeroCartao, pais, cidade, hospedagem, id, cargo;
 		CInBoraViajar cinbora = null;
 		Cliente cliente = null;
 		Destino destino = null;
@@ -202,17 +201,18 @@ public class main {
 				System.out.println("3 - Funcionário");
 				
 				escolha = in.nextInt();
+				in.nextLine();
 				
 				if (escolha == 0) {
 					System.out.println("Digite o cpf do cliente que vai ser removido:");
 					cpf = in.nextLine();
 					try {
+						nome = cinbora.procurarCliente(cpf).getNome();
 						cinbora.removerCliente(cpf);
 					} catch (ClienteNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
-					
-					System.out.println("---- Cliente removido com sucesso ----");
+					System.out.println("---- Cliente " + nome +" removido com sucesso ----");
 				}
 				if (escolha == 1) {
 					System.out.println("Digite a cidade que vai ser removida:");
@@ -226,15 +226,6 @@ public class main {
 					System.out.println("---- Destino removido com sucesso ----");
 				}
 				if (escolha == 2) {
-					System.out.println("Digite o identificador do pacote que vai ser removido:");
-					id = in.nextLine();
-					try {
-						cinbora.removerPacote(id);
-					} catch (PacoteNaoEncontradoException e) {
-						System.out.println(e.getMessage());
-					}
-					
-					System.out.println("---- Pacote removido com sucesso ----");
 
 				}
 				if (escolha == 3) {
