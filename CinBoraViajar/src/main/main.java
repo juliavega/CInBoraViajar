@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import classesBasicas.Cliente;
 import classesBasicas.Destino;
+import classesBasicas.Funcionario;
 import classesBasicas.PacoteViagem;
 import erros.ClienteInvalidoException;
 import erros.ClienteJaCadastradoException;
@@ -14,10 +15,12 @@ import erros.DestinoInvalidoException;
 import erros.DestinoJaCadastradoException;
 import erros.DestinoNaoEncontradoException;
 import erros.EmailInvalidoException;
+import erros.FuncionarioJaCadastradoException;
 import erros.LimiteAtingidoException;
 import erros.NomeMuitoLongoException;
 import erros.NumeroCartaoInvalidoException;
 import erros.PacoteJaCadastradoException;
+import erros.SalarioMuitoBaixoException;
 import erros.ValorPacoteInvalidoException;
 import fachada.CInBoraViajar;
 
@@ -29,11 +32,13 @@ public class main {
 		System.out.println("Você deseja utilizar nosso sistema em array ou lista? (Digite 0 para array e 1 para lista)");
 		
 		int escolha, valor, duracao;
-		String nome, cpf, dataNascimento, email, numeroCartao, pais, cidade, hospedagem, id;
+		double salario;
+		String nome, cpf, dataNascimento, email, numeroCartao, pais, cidade, hospedagem, id, cargo;
 		CInBoraViajar cinbora = null;
 		Cliente cliente = null;
 		Destino destino = null;
 		PacoteViagem pacote;
+		Funcionario funcionario;
 		// Escolha do tipo do repositorio
 		escolha = in.nextInt();
 		
@@ -124,7 +129,7 @@ public class main {
 					} catch (ClienteNaoEncontradoException e){
 						System.out.println(e.getMessage());
 					} 
-					System.out.println("Digite a cidade que do pacote:");
+					System.out.println("Digite a cidade do pacote:");
 					cidade = in.nextLine();
 					try {
 						destino = cinbora.procurarDestino(cidade);
@@ -157,6 +162,33 @@ public class main {
 					System.out.println("---- Pacote cadastrado com sucesso ----");
 					
 				} else if (escolha == 3) {
+					System.out.println("Digite o nome do funcionário:");
+					nome = in.nextLine();
+					System.out.println("Digite o cpf do funcionário:");
+					cpf = in.nextLine();
+					System.out.println("Digite a data de nascimento (no formato xx/xx/xxxx):");
+					dataNascimento = in.nextLine();
+					System.out.println("Digite o cargo do funcionário:");
+					cargo = in.nextLine();
+					System.out.println("Digite o salário do funcionário:");
+					salario = in.nextDouble();
+					in.nextLine();
+					try {
+						funcionario = new Funcionario(nome, cpf, dataNascimento, cargo, salario);
+						cinbora.cadastrarFuncionario(funcionario);
+					} catch (NomeMuitoLongoException e){
+						System.out.println(e.getMessage());
+					} catch (FuncionarioJaCadastradoException e) {
+						System.out.println(e.getMessage());
+					} catch (LimiteAtingidoException e) {
+						System.out.println(e.getMessage());
+					} catch (CpfInvalidoException e) {
+						System.out.println(e.getMessage());
+					} catch (SalarioMuitoBaixoException e) {
+						System.out.println(e.getMessage());
+					} catch (DataNascimentoInvalidaException e) {
+						System.out.println(e.getMessage());
+					}
 					
 				}
 			} else if (escolha == 1) {
