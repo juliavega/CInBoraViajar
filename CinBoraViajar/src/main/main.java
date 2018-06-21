@@ -20,6 +20,7 @@ import erros.LimiteAtingidoException;
 import erros.NomeMuitoLongoException;
 import erros.NumeroCartaoInvalidoException;
 import erros.PacoteJaCadastradoException;
+import erros.PacoteNaoEncontradoException;
 import erros.SalarioMuitoBaixoException;
 import erros.ValorPacoteInvalidoException;
 import fachada.CInBoraViajar;
@@ -225,6 +226,15 @@ public class main {
 					System.out.println("---- Destino removido com sucesso ----");
 				}
 				if (escolha == 2) {
+					System.out.println("Digite o identificador do pacote que vai ser removido:");
+					id = in.nextLine();
+					try {
+						cinbora.removerPacote(id);
+					} catch (PacoteNaoEncontradoException e) {
+						System.out.println(e.getMessage());
+					}
+					
+					System.out.println("---- Pacote removido com sucesso ----");
 
 				}
 				if (escolha == 3) {
