@@ -272,5 +272,6 @@ public class main {
 				in.nextLine();
 			}
 		}
+		System.out.println("---- Sistema encerrado ----");
 	}
 }
