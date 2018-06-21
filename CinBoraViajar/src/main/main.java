@@ -249,7 +249,7 @@ public class main {
 						System.out.println(e.getMessage());
 					}
 
-					System.out.println("---- Funcionario" + nome + "removido com sucesso ----");
+					System.out.println("---- Funcionario " + nome + " removido com sucesso ----");
 				}
 
 			} else if (escolha == 2) {
