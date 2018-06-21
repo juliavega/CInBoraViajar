@@ -191,6 +191,7 @@ public class main {
 						System.out.println(e.getMessage());
 					}
 					
+					System.out.println("---- Funcionário cadastrado com sucesso ----");
 				}
 			} else if (escolha == 1) {
 				System.out.println("O que voce deseja remover?");
@@ -200,6 +201,16 @@ public class main {
 				System.out.println("3 - Funcionário");
 				
 				escolha = in.nextInt();
+				
+				if (escolha == 0) {
+					System.out.println("Digite o cpf do cliente que vai ser removido:");
+					cpf = in.nextLine();
+					try {
+						cinbora.removerCliente(cpf);
+					} catch (ClienteNaoEncontradoException e) {
+						System.out.println(e.getMessage());
+					}
+				}
 			} else if (escolha == 2) {
 				System.out.println("O que voce deseja atualizar?");
 				System.out.println("0 - Cliente");
