@@ -16,10 +16,12 @@ import erros.DestinoJaCadastradoException;
 import erros.DestinoNaoEncontradoException;
 import erros.EmailInvalidoException;
 import erros.FuncionarioJaCadastradoException;
+import erros.FuncionarioNaoEncontradoException;
 import erros.LimiteAtingidoException;
 import erros.NomeMuitoLongoException;
 import erros.NumeroCartaoInvalidoException;
 import erros.PacoteJaCadastradoException;
+import erros.PacoteNaoEncontradoException;
 import erros.SalarioMuitoBaixoException;
 import erros.ValorPacoteInvalidoException;
 import fachada.CInBoraViajar;
@@ -226,11 +228,28 @@ public class main {
 					System.out.println("---- Destino removido com sucesso ----");
 				}
 				if (escolha == 2) {
-
+					System.out.println("Digite o identificador do pacote que vai ser removido:");
+					id = in.nextLine();
+					try {
+						cinbora.removerPacote(id);
+					} catch (PacoteNaoEncontradoException e) {
+						System.out.println(e.getMessage());
+					}
+					
+					System.out.println("---- Pacote removido com sucesso ----");
 				}
 				if (escolha == 3) {
+					System.out.println("Digite o cpf do funcionário que vai ser removido:");
+					cpf = in.nextLine();
+					try {
+						cinbora.removerFuncionario(cpf);
+					} catch (FuncionarioNaoEncontradoException e) {
+						System.out.println(e.getMessage());
+					}
 					
+					System.out.println("---- Funcionario removido com sucesso ----");
 				}
+				
 			} else if (escolha == 2) {
 				System.out.println("O que voce deseja atualizar?");
 				System.out.println("0 - Cliente");
