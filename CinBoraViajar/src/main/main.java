@@ -214,7 +214,7 @@ public class main {
 					} catch (ClienteNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
-					System.out.println("---- Cliente " + nome +" removido com sucesso ----");
+					System.out.println("---- Cliente " + nome + " removido com sucesso ----");
 				}
 				if (escolha == 1) {
 					System.out.println("Digite a cidade que vai ser removida:");
@@ -225,7 +225,7 @@ public class main {
 						System.out.println(e.getMessage());
 					}
 					
-					System.out.println("---- Destino removido com sucesso ----");
+					System.out.println("---- Destino " + cidade + " removido com sucesso ----");
 				}
 				if (escolha == 2) {
 					System.out.println("Digite o identificador do pacote que vai ser removido:");
@@ -236,20 +236,21 @@ public class main {
 						System.out.println(e.getMessage());
 					}
 					
-					System.out.println("---- Pacote removido com sucesso ----");
+					System.out.println("---- Pacote "+ id + " removido com sucesso ----");
 				}
 				if (escolha == 3) {
 					System.out.println("Digite o cpf do funcionário que vai ser removido:");
 					cpf = in.nextLine();
 					try {
+						nome = cinbora.procurarFuncionario(cpf).getNome();
 						cinbora.removerFuncionario(cpf);
 					} catch (FuncionarioNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
-					
-					System.out.println("---- Funcionario removido com sucesso ----");
-				}
-				
+ 					
+					System.out.println("---- Funcionario" + nome + "removido com sucesso ----");
+ 				}
+			
 			} else if (escolha == 2) {
 				System.out.println("O que voce deseja atualizar?");
 				System.out.println("0 - Cliente");
@@ -258,6 +259,7 @@ public class main {
 				System.out.println("3 - Funcionário");
 				
 				escolha = in.nextInt();
+				in.nextLine();
 			} else if (escolha == 3){
 				System.out.println("O que voce deseja procurar?");
 				System.out.println("0 - Cliente");
@@ -266,6 +268,7 @@ public class main {
 				System.out.println("3 - Funcionário");
 				
 				escolha = in.nextInt();
+				in.nextLine();
 			}
 		}	
 	}	
