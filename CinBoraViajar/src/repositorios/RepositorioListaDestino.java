@@ -51,7 +51,7 @@ public class RepositorioListaDestino implements RepositorioDestino {
 		Destino resposta;
 		resposta = null;
 		if (this.destino != null) {
-			if (this.destino.getCidade().equals(destino)) {
+			if (this.destino.getCidade().equals(cidade)) {
 				resposta = this.destino;
 			} else {
 				this.proximo.procurar(cidade);
