@@ -213,6 +213,23 @@ public class main {
 					
 					System.out.println("---- Cliente removido com sucesso ----");
 				}
+				if (escolha == 1) {
+					System.out.println("Digite a cidade que vai ser removida:");
+					cidade = in.nextLine();
+					try {
+						cinbora.removerDestino(cidade);
+					} catch (DestinoNaoEncontradoException e) {
+						System.out.println(e.getMessage());
+					}
+					
+					System.out.println("---- Destino removido com sucesso ----");
+				}
+				if (escolha == 2) {
+
+				}
+				if (escolha == 3) {
+					
+				}
 			} else if (escolha == 2) {
 				System.out.println("O que voce deseja atualizar?");
 				System.out.println("0 - Cliente");
