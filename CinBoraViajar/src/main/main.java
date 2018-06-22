@@ -126,12 +126,14 @@ public class main {
 
 				} else if (escolha == 2) {
 					System.out.println("Digite o cpf do cliente para quem o pacote será feito:");
+					
 					cpf = in.nextLine();
 					try {
 						cliente = cinbora.procurarCliente(cpf);
 					} catch (ClienteNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
+					
 					System.out.println("Digite a cidade do pacote:");
 					cidade = in.nextLine();
 					try {
@@ -139,14 +141,18 @@ public class main {
 					} catch (DestinoNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
+					
 					System.out.println("Digite o valor do pacote:");
 					valor = in.nextInt();
 					in.nextLine();
+					
 					System.out.println("Digite o número de meses do pacote:");
 					duracao = in.nextInt();
 					in.nextLine();
+					
 					System.out.println("Digite o identificador do pacote:");
 					id = in.nextLine();
+					
 					try {
 						pacote = new PacoteViagem(cliente, destino, valor, duracao, id);
 						cinbora.cadastrarPacote(pacote);
