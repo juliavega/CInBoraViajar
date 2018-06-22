@@ -78,7 +78,7 @@ public class main {
 				if (escolha == 0) {
 					System.out.println("Digite o nome:");
 					nome = in.nextLine();
-					System.out.println("Digite o cpf:");
+					System.out.println("Digite o cpf (somente os dígitos):");
 					cpf = in.nextLine();
 					System.out.println("Digite a data de nascimento (no formato xx/xx/xxxx):");
 					dataNascimento = in.nextLine();
@@ -172,7 +172,7 @@ public class main {
 				} else if (escolha == 3) {
 					System.out.println("Digite o nome do funcionário:");
 					nome = in.nextLine();
-					System.out.println("Digite o cpf do funcionário:");
+					System.out.println("Digite o cpf do funcionário (somente os dígitos):");
 					cpf = in.nextLine();
 					System.out.println("Digite a data de nascimento (no formato xx/xx/xxxx):");
 					dataNascimento = in.nextLine();
@@ -268,7 +268,7 @@ public class main {
 				if (escolha == 0) {
 					System.out.println("Digite o nome do cliente:");
 					nome = in.nextLine();
-					System.out.println("Digite o cpf do cliente:");
+					System.out.println("Digite o cpf do cliente (somente os dígitos):");
 					cpf = in.nextLine();
 					System.out.println("Digite a data de nascimento do cliente (no formato xx/xx/xxxx):");
 					dataNascimento = in.nextLine();
@@ -351,7 +351,7 @@ public class main {
 				} else if (escolha == 3) {
 					System.out.println("Digite o nome do funcionário:");
 					nome = in.nextLine();
-					System.out.println("Digite o cpf do funcionário:");
+					System.out.println("Digite o cpf do funcionário (somente os dígitos):");
 					cpf = in.nextLine();
 					System.out.println("Digite a data de nascimento (no formato xx/xx/xxxx):");
 					dataNascimento = in.nextLine();
@@ -363,7 +363,7 @@ public class main {
 					try {
 						funcionario = new Funcionario(nome, cpf, dataNascimento, cargo, salario);
 						cinbora.atualizarFuncionario(funcionario);
-						System.out.println("---- Funcionário "+ nome+ "atualizado com sucesso ----");
+						System.out.println("---- Funcionário "+ nome+ " atualizado com sucesso ----");
 					} catch (NomeMuitoLongoException e) {
 						System.out.println(e.getMessage());
 					} catch (FuncionarioJaCadastradoException e) {
