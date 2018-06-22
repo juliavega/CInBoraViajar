@@ -419,14 +419,14 @@ public class main {
 					} catch (DestinoNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
-				} else if (escolha == 2) {
+				} else if (escolha == 3) {
 					System.out.println("Digite o cpf do funcionário que você deseja procurar:");
 					cpf = in.nextLine();
 					try {
-						System.out.println("O nome do cliente é: " + cinbora.procurarFuncionario(cpf).getNome());
+						System.out.println("O nome do funcionário é: " + cinbora.procurarFuncionario(cpf).getNome());
 						System.out.println("A data de nascimento é: " + cinbora.procurarFuncionario(cpf).getDataNascimento());
 						System.out.println("O cargo é: " + cinbora.procurarFuncionario(cpf).getCargo());
-						System.out.println("O salário é: " + cinbora.procurarFuncionario(cpf).getSalario());
+						System.out.println("O salário é: " + cinbora.procurarFuncionario(cpf).getSalario() + " reais");
 					} catch (FuncionarioNaoEncontradoException e){
 						System.out.println(e.getMessage());
 					}
