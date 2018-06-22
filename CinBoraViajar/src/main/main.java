@@ -260,11 +260,11 @@ public class main {
 				in.nextLine();
 
 				if (escolha == 0) {
-					System.out.println("Digite o nome do cliente antigo:");
+					System.out.println("Digite o nome do cliente:");
 					nome = in.nextLine();
-					System.out.println("Digite o cpf do cliente antigo:");
+					System.out.println("Digite o cpf do cliente:");
 					cpf = in.nextLine();
-					System.out.println("Digite a data de nascimento do cliente antigo (no formato xx/xx/xxxx):");
+					System.out.println("Digite a data de nascimento do cliente (no formato xx/xx/xxxx):");
 					dataNascimento = in.nextLine();
 					System.out.println("Digite o email:");
 					email = in.nextLine();
