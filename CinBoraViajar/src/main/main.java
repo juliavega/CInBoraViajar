@@ -104,7 +104,6 @@ public class main {
 						System.out.println(e.getMessage());
 					}
 
-
 				} else if (escolha == 1) {
 					System.out.println("Digite o país:");
 					pais = in.nextLine();
@@ -123,8 +122,6 @@ public class main {
 						System.out.println(e.getMessage());
 					}
 
-
-					// Deixar melhor experiencia de usuário
 				} else if (escolha == 2) {
 					System.out.println("Digite o cpf do cliente para quem o pacote será feito:");
 					cpf = in.nextLine();
@@ -163,7 +160,6 @@ public class main {
 					} catch (DestinoInvalidoException e) {
 						System.out.println(e.getMessage());
 					}
-
 
 				} else if (escolha == 3) {
 					System.out.println("Digite o nome do funcionário:");
@@ -216,8 +212,7 @@ public class main {
 					} catch (ClienteNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
-				}
-				if (escolha == 1) {
+				} else if (escolha == 1) {
 					System.out.println("Digite a cidade que vai ser removida:");
 					cidade = in.nextLine();
 					try {
@@ -227,8 +222,7 @@ public class main {
 						System.out.println(e.getMessage());
 					}
 
-				}
-				if (escolha == 2) {
+				} else if (escolha == 2) {
 					System.out.println("Digite o identificador do pacote que vai ser removido:");
 					id = in.nextLine();
 					try {
@@ -238,8 +232,7 @@ public class main {
 						System.out.println(e.getMessage());
 					}
 
-				}
-				if (escolha == 3) {
+				} else if (escolha == 3) {
 					System.out.println("Digite o cpf do funcionário que vai ser removido:");
 					cpf = in.nextLine();
 					try {
@@ -261,6 +254,121 @@ public class main {
 
 				escolha = in.nextInt();
 				in.nextLine();
+
+				if (escolha == 0) {
+					System.out.println("Digite o nome do cliente antigo:");
+					nome = in.nextLine();
+					System.out.println("Digite o cpf do cliente antigo:");
+					cpf = in.nextLine();
+					System.out.println("Digite a data de nascimento do cliente antigo (no formato xx/xx/xxxx):");
+					dataNascimento = in.nextLine();
+					System.out.println("Digite o email:");
+					email = in.nextLine();
+					System.out.println("Digite o numero do cartão com 16 dígitos:");
+					numeroCartao = in.nextLine();
+					try {
+						cliente = new Cliente(nome, cpf, dataNascimento, email, numeroCartao);
+						cinbora.atualizarCliente(cliente);
+						System.out.println("---- Cliente " + nome + " atualizado com sucesso ----");
+					} catch (NomeMuitoLongoException e) {
+						System.out.println(e.getMessage());
+					} catch (CpfInvalidoException e) {
+						System.out.println(e.getMessage());
+					} catch (DataNascimentoInvalidaException e) {
+						System.out.println(e.getMessage());
+					} catch (EmailInvalidoException e) {
+						System.out.println(e.getMessage());
+					} catch (NumeroCartaoInvalidoException e) {
+						System.out.println(e.getMessage());
+					} catch (ClienteNaoEncontradoException e) {
+						System.out.println(e.getMessage());
+					}
+				} else if (escolha == 1) {
+					System.out.println("Digite o país:");
+					pais = in.nextLine();
+					System.out.println("Digite a cidade:");
+					cidade = in.nextLine();
+					System.out.println("Digite o tipo da hospedagem:");
+					hospedagem = in.nextLine();
+
+					try {
+						destino = new Destino(pais, cidade, hospedagem);
+						cinbora.atualizarDestino(destino);
+						System.out.println("---- Destino" + cidade + " atualizado com sucesso ----");
+					} catch (DestinoJaCadastradoException e) {
+						System.out.println(e.getMessage());
+					} catch (DestinoNaoEncontradoException e) {
+						System.out.println(e.getMessage());
+					}
+				} else if (escolha == 2) {
+					
+					System.out.println("Digite o cpf do cliente que possui o pacote a ser atualizado:");
+					cpf = in.nextLine();
+					try {
+						cliente = cinbora.procurarCliente(cpf);
+					} catch (ClienteNaoEncontradoException e) {
+						System.out.println(e.getMessage());
+					}
+					System.out.println("Digite a cidade do pacote:");
+					cidade = in.nextLine();
+					try {
+						destino = cinbora.procurarDestino(cidade);
+					} catch (DestinoNaoEncontradoException e) {
+						System.out.println(e.getMessage());
+					}
+					System.out.println("Digite o valor do pacote:");
+					valor = in.nextInt();
+					in.nextLine();
+					System.out.println("Digite o número de meses do pacote:");
+					duracao = in.nextInt();
+					in.nextLine();
+					System.out.println("Digite o identificador do pacote:");
+					id = in.nextLine();
+					try {
+						pacote = new PacoteViagem(cliente, destino, valor, duracao, id);
+						cinbora.atualizarPacote(pacote);
+						System.out.println("---- Pacote "+ id + "atualizado com sucesso ----");
+					} catch (ValorPacoteInvalidoException e) {
+						System.out.println(e.getMessage());
+					} catch (PacoteNaoEncontradoException e) {
+						System.out.println(e.getMessage());
+					} catch (ClienteInvalidoException e) {
+						System.out.println(e.getMessage());
+					} catch (DestinoInvalidoException e) {
+						System.out.println(e.getMessage());
+					}
+					
+				} else if (escolha == 3) {
+					System.out.println("Digite o nome do funcionário:");
+					nome = in.nextLine();
+					System.out.println("Digite o cpf do funcionário:");
+					cpf = in.nextLine();
+					System.out.println("Digite a data de nascimento (no formato xx/xx/xxxx):");
+					dataNascimento = in.nextLine();
+					System.out.println("Digite o cargo do funcionário:");
+					cargo = in.nextLine();
+					System.out.println("Digite o salário do funcionário:");
+					salario = in.nextDouble();
+					in.nextLine();
+					try {
+						funcionario = new Funcionario(nome, cpf, dataNascimento, cargo, salario);
+						cinbora.atualizarFuncionario(funcionario);
+						System.out.println("---- Funcionário "+ nome+ "atualizado com sucesso ----");
+					} catch (NomeMuitoLongoException e) {
+						System.out.println(e.getMessage());
+					} catch (FuncionarioJaCadastradoException e) {
+						System.out.println(e.getMessage());
+					}  catch (CpfInvalidoException e) {
+						System.out.println(e.getMessage());
+					} catch (SalarioMuitoBaixoException e) {
+						System.out.println(e.getMessage());
+					} catch (DataNascimentoInvalidaException e) {
+						System.out.println(e.getMessage());
+					} catch (FuncionarioNaoEncontradoException e) {
+						System.out.println(e.getMessage());
+					}
+				}
+				
 			} else if (escolha == 3) {
 				System.out.println("O que voce deseja procurar?");
 				System.out.println("0 - Cliente");

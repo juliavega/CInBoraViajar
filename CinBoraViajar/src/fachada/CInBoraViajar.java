@@ -72,8 +72,20 @@ public class CInBoraViajar {
 		pacotesViagem.remover(id);
 	}
 
-	public void atualizarPacote(PacoteViagem pacote) throws PacoteNaoEncontradoException {
-		pacotesViagem.atualizar(pacote);
+	public void atualizarPacote(PacoteViagem pacote) throws PacoteNaoEncontradoException, DestinoInvalidoException, ClienteInvalidoException {
+		Destino d = pacote.getDestino();
+		Cliente c = pacote.getCliente();
+		if (destinos.existe(d.getCidade()) && clientes.existe(c.getCpf())) {
+			pacotesViagem.atualizar(pacote);
+		} else if (!destinos.existe(d.getCidade())) {
+			DestinoInvalidoException e;
+			e = new DestinoInvalidoException();
+			throw e;
+		} else {
+			ClienteInvalidoException e;
+			e = new ClienteInvalidoException();
+			throw e;
+		}
 	}
 
 	public PacoteViagem procurarPacote(String id) throws PacoteNaoEncontradoException {
