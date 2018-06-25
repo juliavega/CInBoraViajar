@@ -190,7 +190,11 @@ public class main {
 						} catch (DestinoInvalidoException e) {
 							System.out.println(e.getMessage());
 						}
-					} 
+					} else if (!clienteOk) {
+						System.out.println("Cliente nao encontrado");
+					} else if (!destinoOk) {
+						System.out.println("Destino nao encontrado");
+					}
 
 				} else if (escolha == 3) {
 					System.out.println("Digite o nome do funcionário:");
@@ -255,9 +259,13 @@ public class main {
 				} else if (escolha == 1) {
 					System.out.println("Digite a cidade que vai ser removida:");
 					cidade = in.nextLine();
+					
+					// Confere se o destino existe para remover
 					try {
 						cinbora.removerDestino(cidade);
 						System.out.println("---- Destino " + cidade + " removido com sucesso ----");
+						
+					// Caso não, manda este erro
 					} catch (DestinoNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
@@ -314,10 +322,14 @@ public class main {
 					email = in.nextLine();
 					System.out.println("Digite o numero do cartão com 16 dígitos:");
 					numeroCartao = in.nextLine();
+					
+					// Confere se os dados estão corretos e se o cliente existe
 					try {
 						cliente = new Cliente(nome, cpf, dataNascimento, email, numeroCartao);
 						cinbora.atualizarCliente(cliente);
 						System.out.println("---- Cliente " + nome + " atualizado com sucesso ----");
+						
+					// Caso não, pode mandar estes erros
 					} catch (NomeMuitoLongoException e) {
 						System.out.println(e.getMessage());
 					} catch (CpfInvalidoException e) {
@@ -339,10 +351,13 @@ public class main {
 					System.out.println("Digite o tipo da hospedagem:");
 					hospedagem = in.nextLine();
 
+					// Confere se os dados estão corretos e se o destino existe
 					try {
 						destino = new Destino(pais, cidade, hospedagem);
 						cinbora.atualizarDestino(destino);
 						System.out.println("---- Destino " + cidade + " atualizado com sucesso ----");
+						
+					// Caso não, pode mandar estes erros
 					} catch (DestinoJaCadastradoException e) {
 						System.out.println(e.getMessage());
 					} catch (DestinoNaoEncontradoException e) {
@@ -381,10 +396,14 @@ public class main {
 					System.out.println("Digite o identificador do pacote:");
 					id = in.nextLine();
 					if (clienteOk && destinoOk) {
+						
+						// Confere se os dados estão corretos e se o pacote realmente existe
 						try {
 							pacote = new PacoteViagem(cliente, destino, valor, duracao, id);
 							cinbora.atualizarPacote(pacote);
 							System.out.println("---- Pacote "+ id + " atualizado com sucesso ----");
+							
+						// Caso não, pode mandar estes erros
 						} catch (ValorPacoteInvalidoException e) {
 							System.out.println(e.getMessage());
 						} catch (PacoteNaoEncontradoException e) {
@@ -394,6 +413,10 @@ public class main {
 						} catch (DestinoInvalidoException e) {
 							System.out.println(e.getMessage());
 						}
+					} else if (!clienteOk) {
+						System.out.println("Cliente nao encontrado");
+					} else if (!destinoOk) {
+						System.out.println("Destino nao encontrado");
 					}
 					
 				} else if (escolha == 3) {
@@ -408,10 +431,14 @@ public class main {
 					System.out.println("Digite o salário do funcionário:");
 					salario = in.nextDouble();
 					in.nextLine();
+					
+					// Confere se os dados estão corretos e se existe o funcionario
 					try {
 						funcionario = new Funcionario(nome, cpf, dataNascimento, cargo, salario);
 						cinbora.atualizarFuncionario(funcionario);
 						System.out.println("---- Funcionário "+ nome+ " atualizado com sucesso ----");
+					
+					// Caso não, pode mandar estes erros
 					} catch (NomeMuitoLongoException e) {
 						System.out.println(e.getMessage());
 					} catch (FuncionarioJaCadastradoException e) {
@@ -440,32 +467,44 @@ public class main {
 				if (escolha == 0) {
 					System.out.println("Digite o cpf do cliente que você deseja procurar:");
 					cpf = in.nextLine();
+					
+					// Procura se existe e informa todos as variáveis de cliente
 					try {
 						System.out.println("O nome do cliente é: " + cinbora.procurarCliente(cpf).getNome());
 						System.out.println("A data de nascimento é: " + cinbora.procurarCliente(cpf).getDataNascimento());
 						System.out.println("O email é: " + cinbora.procurarCliente(cpf).getEmail());
 						System.out.println("O número do cartão é: " + cinbora.procurarCliente(cpf).getNumeroCartao());
+						
+					// Caso não exista, manda este erro
 					} catch (ClienteNaoEncontradoException e){
 						System.out.println(e.getMessage());
 					}
 				} else if (escolha == 1) {
 					System.out.println("Digite a cidade do destino que você quer encontrar:");
 					cidade = in.nextLine();
+					
+					// Procura se existe e informa todos as variáveis de destino
 					try {
 						System.out.println("O país do destino é: " + cinbora.procurarDestino(cidade).getPais());
 						System.out.println("A cidade do destino é: " + cinbora.procurarDestino(cidade).getCidade());
 						System.out.println("O tipo de hospedagem do destino é: " + cinbora.procurarDestino(cidade).getHospedagem());
+						
+					// Caso não exista, manda este erro
 					} catch (DestinoNaoEncontradoException e){
 						System.out.println(e.getMessage());
 					}
 				} else if (escolha == 2) {
 					System.out.println("Digite o identificador do pacote que você quer procurar:");
 					id = in.nextLine();
+					
+					// Procura se existe e informa todos as variáveis de cliente
 					try {
 						System.out.println("O cliente que possui o pacote é: " + cinbora.procurarCliente(cinbora.procurarPacote(id).getCliente().getCpf()).getNome());	
 						System.out.println("O destino do pacote é: " + cinbora.procurarDestino(cinbora.procurarPacote(id).getDestino().getCidade()).getCidade());
 						System.out.println("O valor do pacote é: " + cinbora.procurarPacote(id).getValor() + " reais");
 						System.out.println("A duração do pacote é: " + cinbora.procurarPacote(id).getDuracao() + " meses");
+					
+					// Caso algum dos parametros não exista, poderá mandar estes erros
 					} catch (PacoteNaoEncontradoException e){
 						System.out.println(e.getMessage());
 					} catch (ClienteNaoEncontradoException e) {
@@ -476,11 +515,15 @@ public class main {
 				} else if (escolha == 3) {
 					System.out.println("Digite o cpf do funcionário que você deseja procurar:");
 					cpf = in.nextLine();
+					
+					// Procura se existe e informa todos as variáveis de cliente
 					try {
 						System.out.println("O nome do funcionário é: " + cinbora.procurarFuncionario(cpf).getNome());
 						System.out.println("A data de nascimento é: " + cinbora.procurarFuncionario(cpf).getDataNascimento());
 						System.out.println("O cargo é: " + cinbora.procurarFuncionario(cpf).getCargo());
 						System.out.println("O salário é: " + cinbora.procurarFuncionario(cpf).getSalario() + " reais");
+						
+					// Caso não exista, manda esse erro
 					} catch (FuncionarioNaoEncontradoException e){
 						System.out.println(e.getMessage());
 					}
