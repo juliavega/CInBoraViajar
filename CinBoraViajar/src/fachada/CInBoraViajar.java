@@ -33,7 +33,7 @@ public class CInBoraViajar {
 		pacotesViagem = new CadastroPacoteViagem(tipo);		
 	}
 	
-	//Cliente
+	// Cliente
 	public void cadastrarCliente(Cliente cliente) throws LimiteAtingidoException, ClienteJaCadastradoException {
 		clientes.cadastrar(cliente);
 	}
@@ -55,6 +55,8 @@ public class CInBoraViajar {
 			DestinoInvalidoException, ClienteInvalidoException {
 		Destino d = pacote.getDestino();
 		Cliente c = pacote.getCliente();
+		
+		// Erro de Pacote já existente
 		if (destinos.existe(d.getCidade()) && clientes.existe(c.getCpf())) {
 			pacotesViagem.cadastrar(pacote);
 		} else if (!destinos.existe(d.getCidade())) {
@@ -75,6 +77,8 @@ public class CInBoraViajar {
 	public void atualizarPacote(PacoteViagem pacote) throws PacoteNaoEncontradoException, DestinoInvalidoException, ClienteInvalidoException {
 		Destino d = pacote.getDestino();
 		Cliente c = pacote.getCliente();
+		
+		// Verificação se o cliente e o pacote existem 
 		if (destinos.existe(d.getCidade()) && clientes.existe(c.getCpf())) {
 			pacotesViagem.atualizar(pacote);
 		} else if (!destinos.existe(d.getCidade())) {

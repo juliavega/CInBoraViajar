@@ -53,7 +53,9 @@ public class main {
 			cinbora = new CInBoraViajar(true);
 			System.out.println("---- Sistema criado em lista ----");
 		}
-
+		
+		
+		//Loop do programa
 		while (escolha >= 0) {
 
 			System.out.println("O que você deseja fazer?");
@@ -86,10 +88,14 @@ public class main {
 					email = in.nextLine();
 					System.out.println("Digite o numero do cartão com 16 dígitos:");
 					numeroCartao = in.nextLine();
+					
+					// Tenta cadastrar conferindo se todos os parametros estão certos
 					try {
 						cliente = new Cliente(nome, cpf, dataNascimento, email, numeroCartao);
 						cinbora.cadastrarCliente(cliente);
 						System.out.println("---- Cliente cadastrado com sucesso ----");
+						
+					// Caso não estejam, estes erros poderão ser lançados
 					} catch (NomeMuitoLongoException e) {
 						System.out.println(e.getMessage());
 					} catch (CpfInvalidoException e) {
@@ -114,10 +120,13 @@ public class main {
 					System.out.println("Digite o tipo da hospedagem:");
 					hospedagem = in.nextLine();
 
+					// Tenta cadastrar conferindo se todos os parametros estão certos
 					try {
 						destino = new Destino(pais, cidade, hospedagem);
 						cinbora.cadastrarDestino(destino);
 						System.out.println("---- Destino cadastrado com sucesso ----");
+						
+					// Caso não estejam, estes erros poderão ser lançados
 					} catch (DestinoJaCadastradoException e) {
 						System.out.println(e.getMessage());
 					} catch (LimiteAtingidoException e) {
@@ -128,16 +137,24 @@ public class main {
 					System.out.println("Digite o cpf do cliente para quem o pacote será feito:");
 					
 					cpf = in.nextLine();
+					boolean clienteOk = false;
+					boolean destinoOk = false;
+					
+					// Confere se o cliente está cadastrado
 					try {
 						cliente = cinbora.procurarCliente(cpf);
+						clienteOk = true;
 					} catch (ClienteNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
 					
 					System.out.println("Digite a cidade do pacote:");
 					cidade = in.nextLine();
+					
+					// Confere se o destino está cadastrado
 					try {
 						destino = cinbora.procurarDestino(cidade);
+						destinoOk = true;
 					} catch (DestinoNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
@@ -153,21 +170,27 @@ public class main {
 					System.out.println("Digite o identificador do pacote:");
 					id = in.nextLine();
 					
-					try {
-						pacote = new PacoteViagem(cliente, destino, valor, duracao, id);
-						cinbora.cadastrarPacote(pacote);
-						System.out.println("---- Pacote cadastrado com sucesso ----");
-					} catch (ValorPacoteInvalidoException e) {
-						System.out.println(e.getMessage());
-					} catch (PacoteJaCadastradoException e) {
-						System.out.println(e.getMessage());
-					} catch (LimiteAtingidoException e) {
-						System.out.println(e.getMessage());
-					} catch (ClienteInvalidoException e) {
-						System.out.println(e.getMessage());
-					} catch (DestinoInvalidoException e) {
-						System.out.println(e.getMessage());
-					}
+					// Só continua se o cliente e o destino estiverem corretos (já cadastrados)
+					if (clienteOk && destinoOk) {
+						// Tenta cadastrar conferindo se todos os parametros estão certos
+						try {
+							pacote = new PacoteViagem(cliente, destino, valor, duracao, id);
+							cinbora.cadastrarPacote(pacote);
+							System.out.println("---- Pacote cadastrado com sucesso ----");
+						
+						// Caso não estejam, estes erros poderão ser lançados
+						} catch (ValorPacoteInvalidoException e) {
+							System.out.println(e.getMessage());
+						} catch (PacoteJaCadastradoException e) {
+							System.out.println(e.getMessage());
+						} catch (LimiteAtingidoException e) {
+							System.out.println(e.getMessage());
+						} catch (ClienteInvalidoException e) {
+							System.out.println(e.getMessage());
+						} catch (DestinoInvalidoException e) {
+							System.out.println(e.getMessage());
+						}
+					} 
 
 				} else if (escolha == 3) {
 					System.out.println("Digite o nome do funcionário:");
@@ -181,10 +204,14 @@ public class main {
 					System.out.println("Digite o salário do funcionário:");
 					salario = in.nextDouble();
 					in.nextLine();
+
+					// Tenta cadastrar conferindo se todos os parametros estão certos
 					try {
 						funcionario = new Funcionario(nome, cpf, dataNascimento, cargo, salario);
 						cinbora.cadastrarFuncionario(funcionario);
 						System.out.println("---- Funcionário cadastrado com sucesso ----");
+						
+					// Caso não estejam, estes erros poderão ser lançados
 					} catch (NomeMuitoLongoException e) {
 						System.out.println(e.getMessage());
 					} catch (FuncionarioJaCadastradoException e) {
@@ -214,10 +241,14 @@ public class main {
 				if (escolha == 0) {
 					System.out.println("Digite o cpf do cliente que vai ser removido:");
 					cpf = in.nextLine();
+					
+					// Confere se existe para remover e procura o nome para dizer quem removeu 
 					try {
 						nome = cinbora.procurarCliente(cpf).getNome();
 						cinbora.removerCliente(cpf);
 						System.out.println("---- Cliente " + nome + " removido com sucesso ----");
+						
+					// Caso não exista, manda este erro
 					} catch (ClienteNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
@@ -234,9 +265,12 @@ public class main {
 				} else if (escolha == 2) {
 					System.out.println("Digite o identificador do pacote que vai ser removido:");
 					id = in.nextLine();
+					
+					// Confere se o pacote existe para remover
 					try {
 						cinbora.removerPacote(id);
 						System.out.println("---- Pacote " + id + " removido com sucesso ----");
+					// Caso não exista, manda esse erro
 					} catch (PacoteNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
@@ -244,10 +278,14 @@ public class main {
 				} else if (escolha == 3) {
 					System.out.println("Digite o cpf do funcionário que vai ser removido:");
 					cpf = in.nextLine();
+					
+					// Confere se existe para remover e procura o nome para dizer quem removeu
 					try {
 						nome = cinbora.procurarFuncionario(cpf).getNome();
 						cinbora.removerFuncionario(cpf);
 						System.out.println("---- Funcionario " + nome + " removido com sucesso ----");
+					
+					// Caso não exista, manda este erro
 					} catch (FuncionarioNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
@@ -311,18 +349,26 @@ public class main {
 						System.out.println(e.getMessage());
 					}
 				} else if (escolha == 2) {
-					
 					System.out.println("Digite o cpf do cliente que possui o pacote a ser atualizado:");
+					
 					cpf = in.nextLine();
+					boolean clienteOk = false;
+					boolean destinoOk = false;	
+					
+					// Confere se o cliente está cadastrado
 					try {
 						cliente = cinbora.procurarCliente(cpf);
+						clienteOk = true;
 					} catch (ClienteNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
 					System.out.println("Digite a cidade do pacote:");
 					cidade = in.nextLine();
+					
+					// Confere se o destino está cadastrado
 					try {
 						destino = cinbora.procurarDestino(cidade);
+						destinoOk = true;
 					} catch (DestinoNaoEncontradoException e) {
 						System.out.println(e.getMessage());
 					}
@@ -334,18 +380,20 @@ public class main {
 					in.nextLine();
 					System.out.println("Digite o identificador do pacote:");
 					id = in.nextLine();
-					try {
-						pacote = new PacoteViagem(cliente, destino, valor, duracao, id);
-						cinbora.atualizarPacote(pacote);
-						System.out.println("---- Pacote "+ id + " atualizado com sucesso ----");
-					} catch (ValorPacoteInvalidoException e) {
-						System.out.println(e.getMessage());
-					} catch (PacoteNaoEncontradoException e) {
-						System.out.println(e.getMessage());
-					} catch (ClienteInvalidoException e) {
-						System.out.println(e.getMessage());
-					} catch (DestinoInvalidoException e) {
-						System.out.println(e.getMessage());
+					if (clienteOk && destinoOk) {
+						try {
+							pacote = new PacoteViagem(cliente, destino, valor, duracao, id);
+							cinbora.atualizarPacote(pacote);
+							System.out.println("---- Pacote "+ id + " atualizado com sucesso ----");
+						} catch (ValorPacoteInvalidoException e) {
+							System.out.println(e.getMessage());
+						} catch (PacoteNaoEncontradoException e) {
+							System.out.println(e.getMessage());
+						} catch (ClienteInvalidoException e) {
+							System.out.println(e.getMessage());
+						} catch (DestinoInvalidoException e) {
+							System.out.println(e.getMessage());
+						}
 					}
 					
 				} else if (escolha == 3) {
