@@ -11,6 +11,7 @@ public class RepositorioArrayPacoteViagem implements RepositorioPacoteViagem{
 	private PacoteViagem[] arrayPacoteViagem = new PacoteViagem[1000];
 	private int contador = 0;
 	
+	// checa se há posição disponível no array e insere o pacote
 	public void inserir(PacoteViagem pacoteViagem) throws LimiteAtingidoException {
 		if (this.contador < this.arrayPacoteViagem.length) {
 			this.arrayPacoteViagem[contador] = pacoteViagem;
@@ -21,10 +22,13 @@ public class RepositorioArrayPacoteViagem implements RepositorioPacoteViagem{
 			throw e;
 		}
 	}
-
+	
+	// remove o pacote procurado e reorganiza o array
 	public void remover(String id) throws PacoteNaoEncontradoException {
 		int indice = this.getIndice(id);
 		int indiceAux = indice;
+		
+		// manda os elementos à direita do removido uma posição para a esquerda
 		for (int i = 1; i < (arrayPacoteViagem.length - indice); i++) {
 			arrayPacoteViagem[indiceAux] = arrayPacoteViagem [indiceAux + 1];
 			indiceAux++;
@@ -32,7 +36,8 @@ public class RepositorioArrayPacoteViagem implements RepositorioPacoteViagem{
 		arrayPacoteViagem[arrayPacoteViagem.length - 1] = null;
 		contador = contador - 1;
 	}
-
+	
+	// procura por um pacote e o retorna dado o seu id
 	public PacoteViagem procurar(String id) throws PacoteNaoEncontradoException {
 		PacoteViagem resposta = null;
 		boolean jaAchou = false;
@@ -42,7 +47,8 @@ public class RepositorioArrayPacoteViagem implements RepositorioPacoteViagem{
 				jaAchou = true;
 			}
 		}
-
+		
+		// retorna um erro se o pacote procurado não foi encontrado
 		if (jaAchou) {
 			return resposta;
 		} else {
@@ -51,12 +57,14 @@ public class RepositorioArrayPacoteViagem implements RepositorioPacoteViagem{
 			throw e;
 		}
 	}
-
+	
+	// recebe um pacote, pocura por um com id igual, o remove e se insere no lugar
 	public void atualizar(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException {
 		int indice = this.getIndice(pacoteViagem.getId());
 		arrayPacoteViagem[indice] = pacoteViagem;
 	}
 	
+	// método interno para retornar o índice de um objeto dado seu identficador
 	public int getIndice(String id) throws PacoteNaoEncontradoException {
 		int resposta = 0;
 		boolean jaAchou = false;
@@ -75,6 +83,7 @@ public class RepositorioArrayPacoteViagem implements RepositorioPacoteViagem{
 		}
 	}
 	
+	// método interno para checar se existe um objeto com um dado id
 	public boolean existe(String id) {
 		boolean resposta = false;
 		for (int i = 0; i < this.contador && !resposta; i++) {

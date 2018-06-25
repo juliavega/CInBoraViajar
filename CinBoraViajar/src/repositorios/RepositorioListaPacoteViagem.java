@@ -8,12 +8,14 @@ import interfaces.RepositorioPacoteViagem;
 public class RepositorioListaPacoteViagem implements RepositorioPacoteViagem {
 	private PacoteViagem pacoteViagem;
 	private RepositorioListaPacoteViagem proximo;
-
+	
+	// construtor básico
 	public RepositorioListaPacoteViagem() {
 		this.pacoteViagem = null;
 		this.proximo = null;
 	}
-
+	
+	// insere o elemento na posição da lista e referencia próximo para uma nova lista
 	public void inserir(PacoteViagem pacoteViagem) {
 		if (this.pacoteViagem == null) {
 			this.pacoteViagem = pacoteViagem;
@@ -23,6 +25,7 @@ public class RepositorioListaPacoteViagem implements RepositorioPacoteViagem {
 		}
 	}
 
+	// remove o elemento da lista (usa o garbage collector)
 	public void remover(String id) throws PacoteNaoEncontradoException {
 		PacoteViagem pacoteViagemAchado;
 		pacoteViagemAchado = this.procurar(id);
@@ -40,14 +43,16 @@ public class RepositorioListaPacoteViagem implements RepositorioPacoteViagem {
 			throw e;
 		}
 	}
-
+	
+	// procura por um objeto com o determinado identificador, o remove, e insere o novo no lugar
 	public void atualizar(PacoteViagem pacoteViagem) throws PacoteNaoEncontradoException {
 		PacoteViagem pacoteViagemAnterior;
 		pacoteViagemAnterior = procurar(pacoteViagem.getId());
 		this.remover(pacoteViagemAnterior.getId());
 		this.inserir(pacoteViagem);
 	}
-
+	
+	// retorna o funcionário dado o seu cpf
 	public PacoteViagem procurar(String id) throws PacoteNaoEncontradoException {
 		PacoteViagem resposta;
 		resposta = null;
@@ -65,6 +70,7 @@ public class RepositorioListaPacoteViagem implements RepositorioPacoteViagem {
 		return resposta;
 	}
 	
+	// método interno para checar se há um objeto com determinado identificador
 	public boolean existe(String id) {
 		if (this.pacoteViagem != null) {
 			if (this.pacoteViagem.getId().equals(id)) {
