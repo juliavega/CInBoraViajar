@@ -8,12 +8,14 @@ import erros.FuncionarioNaoEncontradoException;
 public class RepositorioListaFuncionario implements RepositorioFuncionario {
 	private Funcionario funcionario;
 	private RepositorioListaFuncionario proximo;
-
+	
+	// construtor básico
 	public RepositorioListaFuncionario() {
 		this.funcionario = null;
 		this.proximo = null;
 	}
-
+	
+	// insere o elemento na posição da lista e referencia próximo para uma nova lista
 	public void inserir(Funcionario funcionario) {
 		if (this.funcionario == null) {
 			this.funcionario = funcionario;
@@ -22,7 +24,8 @@ public class RepositorioListaFuncionario implements RepositorioFuncionario {
 			this.proximo.inserir(funcionario);
 		}
 	}
-
+	
+	// remove o elemento da lista (usa o garbage collector)
 	public void remover(String cpf) throws FuncionarioNaoEncontradoException {
 		Funcionario funcionarioAchado;
 		funcionarioAchado = this.procurar(cpf);
@@ -40,14 +43,16 @@ public class RepositorioListaFuncionario implements RepositorioFuncionario {
 			throw e;
 		}
 	}
-
+	
+	// procura por um objeto com o determinado identificador, o remove, e insere o novo no lugar
 	public void atualizar(Funcionario funcionario) throws FuncionarioNaoEncontradoException, FuncionarioJaCadastradoException {
 		Funcionario funcionarioAnterior;
 		funcionarioAnterior = procurar(funcionario.getCpf());
 		this.remover(funcionarioAnterior.getCpf());
 		this.inserir(funcionario);
 	}
-
+	
+	// retorna o funcionário dado o seu cpf
 	public Funcionario procurar(String cpf) throws FuncionarioNaoEncontradoException {
 		Funcionario resposta;
 		resposta = null;
@@ -65,6 +70,7 @@ public class RepositorioListaFuncionario implements RepositorioFuncionario {
 		return resposta;
 	}
 	
+	// método interno para checar se há um objeto com determinado identificador
 	public boolean existe(String cpf) {
 		if (this.funcionario != null) {
 			if (this.funcionario.getCpf().equals(cpf)) {
