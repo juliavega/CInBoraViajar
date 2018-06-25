@@ -28,6 +28,7 @@ public class RepositorioArrayFuncionario implements RepositorioFuncionario {
 			indiceAux++;
 		}
 		arrayFuncionario[arrayFuncionario.length - 1] = null;
+		contador = contador - 1;
 	}
 
 	public Funcionario procurar(String cpf) throws FuncionarioNaoEncontradoException {

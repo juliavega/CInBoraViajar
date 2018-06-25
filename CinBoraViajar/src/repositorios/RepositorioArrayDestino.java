@@ -28,6 +28,7 @@ public class RepositorioArrayDestino implements RepositorioDestino{
 			indiceAux++;
 		}
 		arrayDestino[arrayDestino.length - 1] = null;
+		contador = contador - 1;
 	}
 
 	public Destino procurar(String cidade) throws DestinoNaoEncontradoException {

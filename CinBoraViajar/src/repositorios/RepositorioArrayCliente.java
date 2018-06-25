@@ -30,6 +30,7 @@ public class RepositorioArrayCliente implements RepositorioCliente {
 			indiceAux++;
 		}
 		arrayCliente[arrayCliente.length - 1] = null;
+		contador = contador - 1;
 	}
 
 	public Cliente procurar(String cpf) throws ClienteNaoEncontradoException {

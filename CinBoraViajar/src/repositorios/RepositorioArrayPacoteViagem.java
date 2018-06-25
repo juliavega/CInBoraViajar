@@ -30,6 +30,7 @@ public class RepositorioArrayPacoteViagem implements RepositorioPacoteViagem{
 			indiceAux++;
 		}
 		arrayPacoteViagem[arrayPacoteViagem.length - 1] = null;
+		contador = contador - 1;
 	}
 
 	public PacoteViagem procurar(String id) throws PacoteNaoEncontradoException {
